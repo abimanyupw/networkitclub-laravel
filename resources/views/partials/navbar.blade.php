@@ -1,12 +1,3 @@
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script>
-    // Script untuk inisialisasi dark mode sebelum halaman render (mencegah flickering)
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
-</script>
 
 <header class="sticky top-0 z-50" 
         x-data="{ 

@@ -3,8 +3,7 @@
 @section('content')
 
 {{-- HERO SECTION --}}
-{{-- Modifikasi: Menggunakan pola background dan typography yang lebih tegas --}}
-<section class="relative bg-gray-900 overflow-hidden">
+<section class="relative bg-gray-900 overflow-hidden transition-colors duration-300">
     <div class="absolute inset-0 z-0 opacity-20">
         <div class="absolute top-0 left-0 w-72 h-72 bg-blue-600 rounded-full blur-[120px]"></div>
         <div class="absolute bottom-0 right-0 w-72 h-72 bg-purple-600 rounded-full blur-[120px]"></div>
@@ -24,14 +23,14 @@
 </section>
 
 {{-- TENTANG KAMI --}}
-<section class="py-24 bg-white transition-colors">
+<section class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
     <div class="max-w-5xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6 tracking-tight">
-                    Wadah Kolaborasi <br><span class="text-blue-600">Masa Depan IT</span>
+                <h2 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">
+                    Wadah Kolaborasi <br><span class="text-blue-600 dark:text-blue-400">Masa Depan IT</span>
                 </h2>
-                <div class="space-y-6 text-gray-600 text-lg leading-relaxed">
+                <div class="space-y-6 text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
                     <p>
                         Network IT Club (NIC) adalah komunitas yang berfokus pada pengembangan keterampilan teknologi informasi, khususnya di bidang jaringan komputer, sistem, dan keamanan siber.
                     </p>
@@ -49,28 +48,29 @@
 </section>
 
 {{-- VISI & MISI --}}
-{{-- Modifikasi: Card styling dengan icon --}}
-<section class="py-24 bg-slate-50">
+<section class="py-24 bg-slate-50 dark:bg-gray-800 transition-colors duration-300">
     <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8">
-        <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200">
+        {{-- Visi Card --}}
+        <div class="bg-white dark:bg-gray-900 p-10 rounded-[2.5rem] shadow-sm border border-slate-200 dark:border-gray-700">
             <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-blue-500/30 text-white">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
             </div>
-            <h3 class="text-3xl font-black text-gray-900 mb-4">Visi</h3>
-            <p class="text-gray-600 text-lg leading-relaxed">
+            <h3 class="text-3xl font-black text-gray-900 dark:text-white mb-4">Visi</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
                 Menjadi komunitas IT yang unggul dalam pengembangan keterampilan jaringan dan keamanan siber yang relevan dengan kebutuhan industri global.
             </p>
         </div>
 
-        <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200">
+        {{-- Misi Card --}}
+        <div class="bg-white dark:bg-gray-900 p-10 rounded-[2.5rem] shadow-sm border border-slate-200 dark:border-gray-700">
             <div class="w-14 h-14 bg-purple-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-purple-500/30 text-white">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
             </div>
-            <h3 class="text-3xl font-black text-gray-900 mb-4">Misi</h3>
+            <h3 class="text-3xl font-black text-gray-900 dark:text-white mb-4">Misi</h3>
             <ul class="space-y-4">
                 @foreach(['Menyediakan pembelajaran IT berbasis praktik', 'Membangun budaya kolaborasi profesional', 'Menyiapkan anggota siap terjun ke dunia kerja'] as $misi)
-                <li class="flex items-start text-gray-600 text-lg">
-                    <span class="mr-3 text-purple-600 mt-1">
+                <li class="flex items-start text-gray-600 dark:text-gray-400 text-lg">
+                    <span class="mr-3 text-purple-600 dark:text-purple-400 mt-1">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293l-4 4a1 1 0 01-1.414 0l-2-2a1 1 0 111.414-1.414L9 10.586l3.293-3.293a1 1 0 111.414 1.414z" clip-rule="evenodd"></path></svg>
                     </span>
                     {{ $misi }}
@@ -82,11 +82,11 @@
 </section>
 
 {{-- KEGIATAN & PENCAPAIAN --}}
-<section class="py-24 bg-white">
+<section class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
     <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-black text-gray-900 mb-4">Kegiatan & Pencapaian</h2>
-            <div class="h-1.5 w-24 bg-blue-600 mx-auto rounded-full"></div>
+            <h2 class="text-4xl font-black text-gray-900 dark:text-white mb-4">Kegiatan & Pencapaian</h2>
+            <div class="h-1.5 w-24 bg-blue-600 dark:bg-blue-500 mx-auto rounded-full"></div>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
@@ -99,12 +99,12 @@
             @endphp
 
             @foreach($kegiatan as $k)
-            <div class="group p-8 rounded-3xl border border-slate-200 bg-white hover:border-blue-500 transition-all shadow-sm hover:shadow-xl">
-                <div class="text-blue-600 mb-6 transition-transform group-hover:scale-110 duration-300">
+            <div class="group p-8 rounded-3xl border border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-blue-500 transition-all shadow-sm hover:shadow-xl">
+                <div class="text-blue-600 dark:text-blue-400 mb-6 transition-transform group-hover:scale-110 duration-300">
                     <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $k['icon'] }}" /></svg>
                 </div>
-                <h4 class="text-xl font-bold text-gray-900 mb-3">{{ $k['t'] }}</h4>
-                <p class="text-gray-600 leading-relaxed">
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{{ $k['t'] }}</h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
                     {{ $k['d'] }}
                 </p>
             </div>

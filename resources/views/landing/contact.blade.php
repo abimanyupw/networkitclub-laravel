@@ -3,22 +3,23 @@
 @section('content')
 
 {{-- HEADER CONTACT --}}
-<section class="bg-white pt-16 pb-12">
+<section class="bg-white dark:bg-gray-900 pt-16 pb-12 transition-colors duration-300">
     <div class="mx-auto max-w-screen-xl px-4 text-center">
-        <h1 class="text-4xl font-black tracking-tight text-gray-900 md:text-6xl">
-            Hubungi <span class="text-blue-600">Kami</span>
+        <h1 class="text-4xl font-black tracking-tight text-gray-900 dark:text-white md:text-6xl">
+            Hubungi <span class="text-blue-600 dark:text-blue-500">Kami</span>
         </h1>
-        <p class="mt-4 text-lg text-gray-500 max-w-2xl mx-auto">
+        <p class="mt-4 text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
             Punya pertanyaan teknis atau ingin berkolaborasi? Kami siap membantu dan mendengar ide-ide hebatmu.
         </p>
     </div>
 </section>
 
-<section class="bg-white pb-20">
+<section class="bg-white dark:bg-gray-900 pb-20 transition-colors duration-300">
     <div class="mx-auto max-w-screen-xl px-4 grid lg:grid-cols-3 gap-12">
         
+        {{-- SISI KIRI: INFORMASI KONTAK --}}
         <div class="lg:col-span-1 space-y-8">
-            <div class="p-8 bg-blue-600 rounded-[1.5rem] text-white shadow-2xl shadow-blue-500/20">
+            <div class="p-8 bg-blue-600 dark:bg-blue-700 rounded-[1.5rem] text-white shadow-2xl shadow-blue-500/20">
                 <h3 class="text-2xl font-bold mb-6">Informasi Kontak</h3>
                 
                 <div class="space-y-6">
@@ -52,37 +53,38 @@
                 </div>
             </div>
 
-            <div class="p-8 bg-gray-200 rounded-[1.5rem] border border-gray-100">
-                <h4 class="text-gray-900 font-bold mb-4">Jam Diskusi & Lab</h4>
-                <ul class="text-sm text-gray-500 space-y-2">
-                    <li class="flex justify-between"><span>Senin - Kamis</span> <span class="font-bold text-gray-700">13:00 - 17:00</span></li>
-                    <li class="flex justify-between"><span>Jumat</span> <span class="font-bold text-gray-700">13:00 - 15:00</span></li>
-                    <li class="flex justify-between text-red-500 font-medium"><span>Sabtu - Minggu</span> <span>Tutup</span></li>
+            <div class="p-8 bg-gray-300 dark:bg-gray-800 rounded-[1.5rem] border border-gray-100 dark:border-gray-700">
+                <h4 class="text-gray-900 dark:text-white font-bold mb-4">Jam Diskusi & Lab</h4>
+                <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2">
+                    <li class="flex justify-between"><span class="text-gray-900 dark:text-gray-200">Senin - Kamis</span> <span class="font-bold text-gray-900 dark:text-gray-200">13:00 - 17:00</span></li>
+                    <li class="flex justify-between"><span class="text-gray-900 dark:text-gray-200">Jumat</span> <span class="font-bold text-gray-900 dark:text-gray-200">13:00 - 15:00</span></li>
+                    <li class="flex justify-between text-red-500 font-medium"><span class="text-gray-900 dark:text-gray-200">Sabtu - Minggu</span> <span>Tutup</span></li>
                 </ul>
             </div>
         </div>
 
-        <div class="lg:col-span-2 bg-gray-200 p-8 md:p-12 rounded-[1.5rem] shadow-sm border border-gray-100">
+        {{-- SISI KANAN: FORM KONTAK --}}
+        <div class="lg:col-span-2 bg-gray-300 dark:bg-gray-800 p-8 md:p-12 rounded-[1.5rem] shadow-sm border border-gray-100 dark:border-gray-700">
             <form action="#" class="space-y-6">
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label for="name" class="block mb-2 text-sm font-bold text-gray-900">Nama Lengkap</label>
-                        <input type="text" id="name" class="w-full p-4 bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all" placeholder="Masukkan namamu" required>
+                        <label for="name" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Nama Lengkap</label>
+                        <input type="text" id="name" class="w-full p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all outline-none" placeholder="Masukkan namamu" required>
                     </div>
                     <div>
-                        <label for="email" class="block mb-2 text-sm font-bold text-gray-900">Email Aktif</label>
-                        <input type="email" id="email" class="w-full p-4 bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all" placeholder="name@email.com" required>
+                        <label for="email" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Email Aktif</label>
+                        <input type="email" id="email" class="w-full p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all outline-none" placeholder="name@email.com" required>
                     </div>
                 </div>
                 <div>
-                    <label for="subject" class="block mb-2 text-sm font-bold text-gray-900">Perihal</label>
-                    <input type="text" id="subject" class="w-full p-4 bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all" placeholder="Misal: Tanya Pendaftaran" required>
+                    <label for="subject" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Perihal</label>
+                    <input type="text" id="subject" class="w-full p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all outline-none" placeholder="Misal: Tanya Pendaftaran" required>
                 </div>
                 <div>
-                    <label for="message" class="block mb-2 text-sm font-bold text-gray-900">Pesan</label>
-                    <textarea id="message" rows="6" class="w-full p-4 bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all" placeholder="Tuliskan pesanmu di sini..."></textarea>
+                    <label for="message" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Pesan</label>
+                    <textarea id="message" rows="6" class="w-full p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all outline-none" placeholder="Tuliskan pesanmu di sini..."></textarea>
                 </div>
-                <button type="submit" class="w-full md:w-fit px-12 py-4 text-white font-black bg-blue-600 rounded-2xl hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-500/30 transform hover:-translate-y-1 transition-all">
+                <button type="submit" class="w-full md:w-fit px-12 py-4 text-white font-black bg-blue-600 dark:bg-blue-500 rounded-2xl hover:bg-blue-700 dark:hover:bg-blue-600 hover:shadow-xl hover:shadow-blue-500/30 transform hover:-translate-y-1 transition-all">
                     Kirim Pesan
                 </button>
             </form>
