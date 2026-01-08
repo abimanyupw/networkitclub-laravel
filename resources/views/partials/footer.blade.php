@@ -1,10 +1,10 @@
 <footer class="p-4 bg-blue-600 sm:p-12">
     <div class="mx-auto max-w-screen-xl">
         <div class="md:flex md:justify-between gap-10">
-            <div class="mb-10 md:mb-0 md:w-1/3">
+            <div class="mb-10 md:mb-0 md:w-1/2">
                 <a href="/" class="flex items-center group">
-                    <div class="p-2 bg-white rounded-2xl mr-4 transition-transform group-hover:rotate-12 duration-300">
-                        <img src="img/logo.png" class="h-12 w-auto" alt="Logo Network IT Club" />
+                    <div class="p-1 bg-white rounded-xl mr-4 transition-transform group-hover:rotate-12 duration-300">
+                        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="h-12 w-auto" alt="Logo Network IT Club" />
                     </div>
                     <div class="flex-col self-center font-semibold whitespace-nowrap text-white">
                         <h1 class="text-2xl font-black tracking-tight leading-none">
@@ -13,7 +13,7 @@
                         <span class="text-sm font-medium text-white uppercase tracking-widest">SMK Negeri 1 Pungging</span>
                     </div>
                 </a>
-                <p class="mt-6 text-white font-bold leading-relaxed text-md">
+                <p class="mt-6 text-white font-bold leading-relaxed text-md w-3/4">
                     Membangun komunitas antusias IT untuk berbagi pengetahuan, berkolaborasi dalam proyek, dan menumbuhkan inovasi di bidang teknologi informasi.
                 </p>
             </div>

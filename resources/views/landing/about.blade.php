@@ -40,8 +40,8 @@
                 </div>
             </div>
             <div class="relative group w-3/4 mx-auto">
-                <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-blue-400 rounded-3xl blur opacity-20 group-hover:opacity-40 transition"></div>
-                <img src="img/logo.png" class="relative rounded-3xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]" alt="NIC Activities">
+                <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-20 group-hover:opacity-40 transition"></div>
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" class="relative rounded-3xl transition-transform duration-500 group-hover:scale-[1.02]" alt="NIC Activities">
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
 <section class="py-24 bg-slate-50 dark:bg-gray-800 transition-colors duration-300">
     <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8">
         {{-- Visi Card --}}
-        <div class="bg-white dark:bg-gray-900 p-10 rounded-[2.5rem] shadow-sm border border-slate-200 dark:border-gray-700">
+        <div class="bg-white dark:bg-gray-900 p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-blue-500 transition-all dark:border-gray-700">
             <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-blue-500/30 text-white">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
             </div>
@@ -62,7 +62,7 @@
         </div>
 
         {{-- Misi Card --}}
-        <div class="bg-white dark:bg-gray-900 p-10 rounded-[2.5rem] shadow-sm border border-slate-200 dark:border-gray-700">
+        <div class="bg-white dark:bg-gray-900 p-10 rounded-[2.5rem] shadow-sm border border-slate-200 hover:border-purple-600 transition-all dark:border-gray-700">
             <div class="w-14 h-14 bg-purple-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-purple-500/30 text-white">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
             </div>

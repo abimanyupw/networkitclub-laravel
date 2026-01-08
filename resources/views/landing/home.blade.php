@@ -28,7 +28,7 @@
         <div class="flex justify-center items-center md:col-span-5 mt-10 md:mt-0">
             {{-- Card QR Code --}}
             <div class="relative p-4 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700">
-                <img class="w-48 h-48 md:w-64 md:h-64 object-contain dark:invert" src="img/qr.png" alt="QR Registration" />
+                <img class="w-48 h-48 md:w-64 md:h-64 object-contain dark:invert" src="{{ asset('img/qr.png') }}" alt="QR Registration" />
                 <p class="mt-4 text-center text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Scan to Join</p>
             </div>
         </div>
@@ -39,8 +39,8 @@
 <section class="bg-gray-50 dark:bg-gray-800 py-16 transition-colors duration-300">
     <div class="flex flex-col items-center px-4 mx-auto max-w-screen-xl gap-12 md:grid md:grid-cols-2 lg:px-6">
         <div class="relative w-1/2 max-w-md mx-auto group">
-            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-            <img class="relative w-full transition-transform duration-500 group-hover:scale-105" src="img/logo.png" alt="Logo Network IT Club">
+            <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-20 group-hover:opacity-40 transition"></div>
+            <img class="relative w-full transition-transform duration-500 group-hover:scale-105" src="{{ asset('img/logo.png') }}" alt="Logo Network IT Club">
         </div>
 
         <div class="text-center md:text-left">
@@ -114,59 +114,25 @@
         </div>
 
         <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            
-            @php
-                $daftar_kelas = [
-                    [
-                        'judul' => 'MikroTik Certified Network Associate',
-                        'deskripsi' => 'Dasar-dasar routing, switching, dan wireless menggunakan perangkat MikroTik.',
-                        'img' => 'https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg',
-                        'level' => 'Beginner',
-                        'badge' => 'Certified'
-                    ],
-                    [
-                        'judul' => 'Linux System Administration',
-                        'deskripsi' => 'Manajemen server Linux, otomasi script, dan konfigurasi web server.',
-                        'img' => 'https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg',
-                        'level' => 'Intermediate',
-                        'badge' => 'Hot'
-                    ],
-                    [
-                        'judul' => 'Cyber Security Fundamental',
-                        'deskripsi' => 'Pelajari teknik dasar pertahanan jaringan dan analisis kerentanan sistem.',
-                        'img' => 'https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg',
-                        'level' => 'Beginner',
-                        'badge' => 'New'
-                    ],
-                    [
-                        'judul' => 'Cisco Networking Academy',
-                        'deskripsi' => 'Persiapan sertifikasi CCNA dengan kurikulum resmi dari Cisco.',
-                        'img' => 'https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg',
-                        'level' => 'Advanced',
-                        'badge' => 'Academy'
-                    ],
-                ];
-            @endphp
-
-            @foreach($daftar_kelas as $kelas)
+            @foreach($courses as $kelas)
             <div class="group flex flex-col h-full rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all duration-300 hover:shadow-2xl hover:border-blue-500 dark:hover:border-blue-500">
                 {{-- Image Container --}}
-                <div class="relative h-48 w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800">
-                    <img class="mx-auto h-full w-full object-contain p-4 transition-transform duration-500 group-hover:scale-110" src="{{ $kelas['img'] }}" alt="{{ $kelas['judul'] }}" />
+                <div class="relative w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800">
+                    <img class="mx-auto h-full w-full object-contain rounded-2xl p-2 transition-transform duration-500 group-hover:scale-110" src="img/{{ $kelas['image'] }}" alt="{{ $kelas['title'] }}" />
                 </div>
 
                 <div class="flex flex-col flex-grow pt-6">
-                    <a href="#" class="text-xl font-black leading-tight text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                        {{ $kelas['judul'] }}
+                    <a href="/classes/{{ $kelas['slug'] }}" class="text-xl font-black leading-tight text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                        {{ $kelas['title'] }}
                     </a>
                     <p class="mt-3 text-sm leading-relaxed text-gray-500 dark:text-gray-400 line-clamp-3">
-                        {{ $kelas['deskripsi'] }}
+                        {{ $kelas['description'] }}
                     </p>
                 </div>
 
                 <div class="mt-6 border-t border-gray-100 dark:border-gray-800 pt-5">
                     <div class="flex items-center justify-between gap-4">
-                        <a href="#" class="inline-flex items-center justify-center w-full rounded-xl bg-gray-900 dark:bg-blue-600 px-5 py-2.5 text-center text-sm font-bold text-white transition-all hover:bg-blue-700 dark:hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                        <a href="/classes/{{ $kelas['slug'] }}" class="inline-flex items-center justify-center w-full rounded-xl bg-gray-900 dark:bg-blue-600 px-5 py-2.5 text-center text-sm font-bold text-white transition-all hover:bg-blue-700 dark:hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300">
                             Masuk Kelas
                         </a>
                     </div>
