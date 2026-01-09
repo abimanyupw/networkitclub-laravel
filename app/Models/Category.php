@@ -4,17 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class Category extends Model
 {
     protected $fillable = [
-        'title',
+        'name',
         'slug',
         'description',
-        'image',
     ];
-
     public function materials()
     {
         return $this->hasMany(Material::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

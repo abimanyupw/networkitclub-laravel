@@ -19,10 +19,32 @@ class LandingController extends Controller
         return view('landing.classes', compact('courses'));
     }
 
-    public function class($slug){
-        $course = Course::where('slug', $slug)->firstOrFail();
-        return view('dashboard.class', compact('course'));
-    }
+public function class(Course $course)
+{
+    $categorySlug = request('category');
+
+    $materials = $course->materials()
+        ->with('category')
+        ->when($categorySlug, function ($query) use ($categorySlug) {
+            $query->whereHas('category', function ($q) use ($categorySlug) {
+                $q->where('slug', $categorySlug);
+            });
+        })
+        ->paginate(6);
+
+    $categories = $course->materials()
+        ->with('category')
+        ->get()
+        ->pluck('category')
+        ->unique('id');
+
+    return view('dashboard.class', compact(
+        'course',
+        'materials',
+        'categories'
+    ));
+}
+
     public function contact(){
         return view('landing.contact');
     }
