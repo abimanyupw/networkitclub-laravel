@@ -2,9 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Course;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,9 +22,48 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
+        User::create([
+            'name' => 'Abimanyu Pradipa Wisnu',
+            'username' => 'abimanyu',
+            'role' => 'developer',
+            'email'=> 'abimanyupw@gmail.com',
+            'password' => Hash::make('Abimanyu237'),
+            'remember_token' => Str::random(10)
         ]);
+
+        Course::create([
+            
+                'title' => 'Cyber Security',
+                'slug' => 'cyber-security',
+                'description' => 'Pelajari dasar-dasar keamanan siber, pertahanan jaringan, dan etika hacker untuk melindungi data.',
+                'image' => 'cyber-logo.jpg' 
+
+            ]);
+
+
+              Course::create([
+                'title' => 'IT Network Cabling',
+                'slug' => 'it-network-cabling',
+                'description' => 'Bangun fondasi jaringan yang kokoh dengan instalasi dan manajemen kabel yang presisi.',
+                'image' => 'cabling-logo.jpg' 
+
+            ]);
+
+
+              Course::create([
+                'title' => 'IT Network System Administration',
+                'slug' =>'it-network-system-administration',
+                'description' => 'Menguasai administrasi sistem dan jaringan, konfigurasi server, serta manajemen infrastruktur IT.',
+                'image' => 'itnsa-logo.jpg' 
+
+            ]);
+
+
+        
     }
 }

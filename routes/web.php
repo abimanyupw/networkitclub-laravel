@@ -12,5 +12,5 @@ Route::get('/classes/{course:slug}', [LandingController::class, 'class'])->name(
 Route::get('/contact',[LandingController::class, 'contact'])->name('contact');
 
 
-Route::get('/classes/materials/{material}', [MaterialController::class, 'show'])
+Route::get('/classes/{course:slug}/{material:slug}', [MaterialController::class, 'show'])
     ->name('materials.show');

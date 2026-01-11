@@ -110,7 +110,7 @@
     <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
         
         <div class="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Semua Kelas</h2>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Kelas Terbaru</h2>
         </div>
 
         <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

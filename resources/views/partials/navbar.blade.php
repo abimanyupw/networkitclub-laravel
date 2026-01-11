@@ -4,7 +4,7 @@
             
             <div class="flex justify-start">
                 <a href="/" class="flex items-center">
-                    <img src="{{ asset('img/logo.png') }}" class="mr-3 h-9 sm:h-11" alt="Logo" />
+                    <img src="{{ asset('img/logo.png') }}" class="mr-1 h-9 sm:h-11" alt="Logo" />
                     <span class="self-center text-xl font-bold whitespace-nowrap text-white">Network IT Club</span>
                 </a>
             </div>
@@ -80,7 +80,7 @@
                             <a href="" class="text-center border border-white py-2 rounded-lg">Log in</a>
                             <a href="" class="text-center bg-white text-blue-600 py-2 rounded-lg">Sign in</a>
                         </li>
-                    @endguest
+                    @endguest                    
                 </ul>
             </div>
         </div>

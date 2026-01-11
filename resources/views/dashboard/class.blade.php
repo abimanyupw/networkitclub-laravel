@@ -15,12 +15,13 @@
                             {{-- Semua --}}
                             <a href="{{ route('class.show', $course->slug) }}"
                             class="flex items-center px-4 py-3 rounded-xl font-medium transition-all duration-200
-                            {{ request('category') ? 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-400' : 'bg-blue-600 text-white shadow-md shadow-blue-200 dark:shadow-none' }}">
+                            {{ !request('category') ? 'bg-blue-600 text-white shadow-md shadow-blue-200 dark:shadow-none' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-400' }}">
                                 <span class="text-sm">Semua Materi</span>
                             </a>
 
                             @foreach ($categories as $category)
-                                <a href="{{ route('class.show', [$course->slug, 'category' => $category->slug]) }}"
+                                {{-- Gunakan parameter 'category' agar sinkron dengan Controller --}}
+                                <a href="{{ route('class.show', ['course' => $course->slug, 'category' => $category->slug]) }}"
                                 class="flex items-center px-4 py-3 rounded-xl font-medium transition-all duration-200
                                 {{ request('category') == $category->slug
                                     ? 'bg-blue-600 text-white shadow-md shadow-blue-200 dark:shadow-none'
@@ -50,7 +51,7 @@
                 <div class="border-t border-gray-200 dark:border-gray-800 pt-10">
                     <div class="flex items-center justify-between mb-8">
                         <h2 class="text-2xl font-bold tracking-tight">Materi Pembelajaran</h2>
-                        <span class="text-sm text-gray-500 font-medium">{{ $materials->count() }} Materi Tersedia</span>
+                        <span class="text-sm text-gray-500 font-medium">{{ $materials->total() }} Materi Tersedia</span>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -75,7 +76,7 @@
                                         </span>
                                     </div>
                                     
-                                    <a href="{{ route('materials.show', $material) }}"
+                                    <a href="{{ route('materials.show', [$course->slug, $material->slug]) }}"
                                     class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
                                         {{ $material->title }}
                                     </a>
@@ -89,7 +90,7 @@
                             </div>
                         @empty
                             <div class="col-span-full py-20 text-center rounded-3xl bg-gray-100 dark:bg-gray-800/50 border-2 border-dashed border-gray-300 dark:border-gray-700">
-                                <p class="text-gray-500 font-medium italic">Belum ada materi dalam kategori ini.</p>
+                                <p class="text-gray-500 font-medium italic">Belum ada materi dalam kelas ini.</p>
                             </div>
                         @endforelse
                     </div>
