@@ -14,19 +14,25 @@
                     </div>
                 </a>
                 <p class="mt-6 text-white font-bold leading-relaxed text-md w-3/4">
-                    Membangun komunitas antusias IT untuk berbagi pengetahuan, berkolaborasi dalam proyek, dan menumbuhkan inovasi di bidang teknologi informasi.
+                    Network It Club atau bisa disebut NIC adalah extrakurikuler yang berfokus pada bidang IT,Kegiatan dalam NIC biasanya mencakup pelatihan, simulasi jaringan menggunakan software atau bahkan membangun infrastruktur jaringan sederhana.
                 </p>
             </div>
 
             <div class="grid grid-cols-2 gap-8 sm:gap-16 sm:grid-cols-3">
                 <div>
-                    <h2 class="mb-6 text-sm font-black text-white uppercase tracking-widest">Resources</h2>
+                    <h2 class="mb-6 text-sm font-black text-white uppercase tracking-widest">Links</h2>
                     <ul class="text-white/70 font-semibold space-y-4">
                         <li>
-                            <a href="https://flowbite.com" class="hover:text-white hover:underline underline-offset-4 transition-colors">Flowbite</a>
+                            <a href="/" class="hover:text-white hover:underline underline-offset-4 transition-colors">Home</a>
                         </li>
                         <li>
-                            <a href="https://tailwindcss.com/" class="hover:text-white hover:underline underline-offset-4 transition-colors">Tailwind CSS</a>
+                            <a href="/about" class="hover:text-white hover:underline underline-offset-4 transition-colors">About</a>
+                        </li>
+                        <li>
+                            <a href="/classes" class="hover:text-white hover:underline underline-offset-4 transition-colors">Classes</a>
+                        </li>
+                        <li>
+                            <a href="/Contact" class="hover:text-white hover:underline underline-offset-4 transition-colors">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -34,10 +40,10 @@
                     <h2 class="mb-6 text-sm font-black text-white uppercase tracking-widest">Follow us</h2>
                     <ul class="text-white/70 font-semibold space-y-4">
                         <li>
-                            <a href="#" class="hover:text-white hover:underline underline-offset-4 transition-colors">Github</a>
+                            <a href="https://www.instagram.com/nic.smkn1pungging/" class="hover:text-white hover:underline underline-offset-4 transition-colors">Instagram</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:text-white hover:underline underline-offset-4 transition-colors">Discord</a>
+                            <a href="https://discord.com/invite/afZ6p7bQwx" class="hover:text-white hover:underline underline-offset-4 transition-colors">Discord</a>
                         </li>
                     </ul>
                 </div>
@@ -45,10 +51,10 @@
                     <h2 class="mb-6 text-sm font-black text-white uppercase tracking-widest">Legal</h2>
                     <ul class="text-white/70 font-semibold space-y-4">
                         <li>
-                            <a href="#" class="hover:text-white hover:underline underline-offset-4 transition-colors">Privacy Policy</a>
+                            <a href="/privacy-policy" class="hover:text-white hover:underline underline-offset-4 transition-colors">Privacy Policy</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:text-white hover:underline underline-offset-4 transition-colors">Terms</a>
+                            <a href="/terms" class="hover:text-white hover:underline underline-offset-4 transition-colors">Terms</a>
                         </li>
                     </ul>
                 </div>
@@ -58,21 +64,29 @@
         <hr class="my-8 border-white/10 sm:mx-auto lg:my-10" />
 
         <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm text-white sm:text-center">
+            <span class="text-lg text-white sm:text-center">
                 © 2025 <a href="/" class="hover:text-white font-bold transition-colors">Network IT Club</a>. All Rights Reserved.
             </span>
             
             <div class="flex mt-6 space-x-5 sm:justify-center sm:mt-0">
-                @php
-                    // Array helper untuk memudahkan pengelolaan icon sosmed jika dibutuhkan
+               @php
+                    // Array helper dengan icon Instagram dan Discord
                     $socials = [
-                        ['path' => 'M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z'],
-                        ['path' => 'M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z'],
+                        [
+                            'name' => 'Instagram',
+                            'path' => 'M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308 1.03 1.03 1.28 2.166 1.346 3.882.06 1.762.06 2.046.06 5.577s0 3.815-.06 5.577c-.066 1.716-.316 2.852-1.346 3.882-.975.976-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-1.03-1.03-1.28-2.166-1.346-3.882-.06-1.762-.06-2.046-.06-5.577s0-3.815.06-5.577c.066-1.716.316-2.852 1.346-3.882.975-.976 2.242-1.246 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z',
+                            'link' => 'https://www.instagram.com/nic.smkn1pungging/'
+                        ],
+                        [
+                            'name' => 'Discord',
+                            'path' => 'M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.125-.094.249-.192.37-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.37.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z',
+                            'link' => 'https://discord.com/invite/afZ6p7bQwx'
+                        ],
                     ];
                 @endphp
 
                 @foreach($socials as $icon)
-                <a href="#" class="text-blue-100/50 hover:text-white transform hover:-translate-y-1 transition-all duration-300">
+                <a href="{{ $icon['link'] }}" class="text-blue-100/50 hover:text-white transform hover:-translate-y-1 transition-all duration-300">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill-rule="evenodd" d="{{ $icon['path'] }}" clip-rule="evenodd" />
                     </svg>

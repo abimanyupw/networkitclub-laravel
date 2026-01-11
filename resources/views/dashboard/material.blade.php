@@ -7,7 +7,7 @@
         {{-- Header & Back Button --}}
         <div class="mb-8 flex flex-wrap items-center justify-between gap-4">
             <a href="{{ route('class.show', $course->slug) }}" 
-               class="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#1a1d23] border border-gray-200 dark:border-gray-800 rounded-xl text-sm font-bold text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm">
+               class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 border border-gray-200 dark:border-gray-800 rounded-xl text-sm font-bold text-white transition-all duration-300 shadow-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>

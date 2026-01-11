@@ -124,9 +124,9 @@
         <h2 class="text-3xl md:text-5xl font-black text-white mb-8 tracking-tighter">
             Siap Menjelajahi <br>Dunia IT Bersama Kami?
         </h2>
-        <a href="{{ route('home') }}"
+        <a href="{{ route('classes') }}"
            class="inline-flex items-center bg-white text-blue-600 px-10 py-4 rounded-2xl font-black hover:bg-gray-100 transform hover:-translate-y-1 transition shadow-2xl">
-            Kembali ke Beranda
+            Melihat Kelas
             <svg class="ml-2 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>
     </div>

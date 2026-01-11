@@ -14,3 +14,10 @@ Route::get('/contact',[LandingController::class, 'contact'])->name('contact');
 
 Route::get('/classes/{course:slug}/{material:slug}', [MaterialController::class, 'show'])
     ->name('materials.show');
+
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+});
+Route::get('/terms', function () {
+    return view('terms');
+});

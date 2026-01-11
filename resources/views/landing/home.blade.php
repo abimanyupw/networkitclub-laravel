@@ -12,14 +12,14 @@
             <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-blue-600 uppercase bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                 🚀 New Season Registration
             </span>
-            <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white md:max-w-2xl md:text-5xl xl:text-7xl">
-                Limited Time Offer!<br /><span class="text-blue-600 dark:text-blue-500">Up to 50% OFF!</span>
+            <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white md:max-w-2xl md:text-3xl xl:text-5xl">
+                Mari Tingkatkan <br /><span class="text-blue-600 dark:text-blue-500">Skill IT Bersama Kami!</span>
             </h1>
-            <h2 class="mb-8 max-w-2xl text-gray-500 dark:text-gray-400 md:mb-12 md:text-lg lg:mb-5 lg:text-xl">
-                Bergabunglah dengan komunitas IT terbesar. Dapatkan akses ke semua materi eksklusif dengan harga unbeatable!
+            <h2 class="mb-8 max-w-2xl font-semibold text-black dark:text-white md:mb-12 md:text-xl lg:mb-5 lg:text-2xl">
+                Scan Untuk Bergabung Dalam Jaringan
             </h2>
             <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-                <a href="#kelas" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-blue-700 rounded-xl hover:bg-blue-800 transition-all shadow-lg shadow-blue-500/30">
+                <a href="{{ route('classes') }}" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-blue-700 rounded-xl hover:bg-blue-800 transition-all shadow-lg shadow-blue-500/30">
                     Cek Kelas Sekarang
                 </a>
             </div>
@@ -48,9 +48,9 @@
                 Membangun Masa Depan <br><span class="text-blue-600 dark:text-blue-400">Teknologi Bersama.</span>
             </h2>
             <p class="mb-8 font-normal text-gray-600 dark:text-gray-400 md:text-lg leading-relaxed">
-                Network IT Club bukan sekadar komunitas, tapi ekosistem bagi para antusias teknologi untuk berbagi ide, riset, dan berkembang bersama di dunia Networking & Cybersecurity.
+                Network It Club atau bisa disebut NIC adalah extrakurikuler yang berfokus pada bidang IT,Kegiatan dalam NIC biasanya mencakup pelatihan, simulasi jaringan menggunakan software atau bahkan membangun infrastruktur jaringan sederhana.Extrakurikuler ini sangat relevan untuk siswa yang memilih jurusan TKJ(Teknik Komputer & Jaringan).
             </p>
-            <a href="#" class="inline-flex items-center text-blue-700 dark:text-blue-400 font-bold group">
+            <a href="{{ route('about') }}" class="inline-flex items-center text-blue-700 dark:text-blue-400 font-bold group">
                 Pelajari visi kami 
                 <svg class="ml-2 w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             </a>
@@ -155,8 +155,8 @@
         <div class="space-y-4">
             @php
                 $faqs = [
-                    ['q' => 'Apa itu Network IT Club?', 'a' => 'Komunitas belajar networking dan server untuk masa depan IT Indonesia.'],
-                    ['q' => 'Apakah kegiatan ini gratis?', 'a' => 'Ya, komunitas kami menyediakan banyak resource gratis untuk pelajar.'],
+                    ['q' => 'Apa itu Network IT Club?', 'a' => 'Network It Club atau bisa disebut NIC adalah extrakurikuler yang berfokus pada bidang IT,Kegiatan dalam NIC biasanya mencakup pelatihan, simulasi jaringan menggunakan software atau bahkan membangun infrastruktur jaringan sederhana.Extrakurikuler ini sangat relevan untuk siswa yang memilih jurusan TKJ(Teknik Komputer & Jaringan).'],
+                    ['q' => 'Apakah kegiatan ini gratis?', 'a' => 'Ya, kegiatan ini gratis untuk siapapun yang ingin belajar di bidang IT'],
                     ['q' => 'Siapa saja yang boleh bergabung?', 'a' => 'Siapapun yang ingin belajar IT tanpa memandang latar belakang pendidikan.']
                 ];
             @endphp

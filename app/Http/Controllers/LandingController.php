@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class LandingController extends Controller
 {
     public function home(){
-        $courses = Course::latest()->take(2)->get();
+        $courses = Course::latest()->get();
         return view('landing.home', compact('courses'));
     }
     public function about(){
