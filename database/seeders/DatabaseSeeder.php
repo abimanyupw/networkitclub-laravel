@@ -63,6 +63,32 @@ class DatabaseSeeder extends Seeder
 
             ]);
 
+            Category::create([
+                'name' => 'Mikrotik',
+                'slug' => 'mikrotik',
+                
+            ]);
+            Category::create([
+                'name' => 'Linux Server',
+                'slug' => 'linux-server',
+               
+            ]);
+            Category::create([
+                'name' => 'Fiber Optik',
+                'slug' => 'fiber-optik',
+               
+            ]);
+            Category::create([
+                'name' => 'Cisco Packet Tracer',
+                'slug' => 'cisco-packet-tracer',
+              
+            ]);
+            Category::create([
+                'name' => 'Binary Exploitation',
+                'slug' => 'binary-exploitation',
+              
+            ]);
+
 
         
     }

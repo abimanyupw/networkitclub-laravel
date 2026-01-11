@@ -50,7 +50,7 @@
                     </div>
                 @else
                     <div class="hidden lg:flex gap-2">
-                        <a href="" class="text-white border border-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 hover:text-black">Log in</a>
+                        <a href="{{ route('login') }}" class="text-white border border-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 hover:text-black">Log in</a>
                         <a href="" class="bg-white/90 text-blue-600 px-4 py-2 rounded-lg text-sm font-bold hover:bg-white">Sign in</a>
                     </div>
                 @endauth

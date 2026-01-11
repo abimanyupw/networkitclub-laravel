@@ -14,7 +14,7 @@
                 Kembali ke Kelas
             </a>
             
-            <span class="px-4 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-black rounded-full uppercase tracking-widest">
+            <span class="px-4 py-1.5 bg-blue-200 dark:bg-blue-700/30 text-blue-600 dark:text-blue-400 text-xs font-black rounded-full uppercase tracking-widest">
                 {{ $material->category->name }}
             </span>
         </div>

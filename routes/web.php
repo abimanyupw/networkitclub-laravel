@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\MaterialController;
 
@@ -21,3 +22,7 @@ Route::get('/privacy-policy', function () {
 Route::get('/terms', function () {
     return view('terms');
 });
+
+Route::get('/login', [LoginController::class, 'show'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout']);

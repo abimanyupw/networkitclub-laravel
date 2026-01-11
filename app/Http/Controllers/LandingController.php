@@ -44,4 +44,5 @@ public function class(Course $course)
     public function contact(){
         return view('landing.contact');
     }
+
 }

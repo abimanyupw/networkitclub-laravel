@@ -68,10 +68,10 @@
 
                                 <div class="p-6">
                                     <div class="flex justify-between gap-2 mb-3">
-                                        <span class="text-[10px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/20 rounded">
+                                        <span class="text-[10px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 px-2 py-0.5 bg-blue-200 dark:bg-blue-700/20 rounded">
                                             {{ $material->category->name }}
                                         </span>
-                                        <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-600 dark:text-yellow-400 px-2 py-0.5 bg-yellow-50 dark:bg-yellow-900/20 rounded">
+                                        <span class="text-[10px] font-bold uppercase tracking-widest text-sky-600 dark:text-sky-400 px-2 py-0.5 bg-sky-200 dark:bg-sky-700/20 rounded">
                                             {{ $material->created_at->diffForHumans() }}
                                         </span>
                                     </div>
