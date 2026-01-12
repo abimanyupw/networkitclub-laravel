@@ -28,7 +28,7 @@
         <div class="flex justify-center items-center md:col-span-5 mt-10 md:mt-0">
             {{-- Card QR Code --}}
             <div class="relative p-4 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700">
-                <img class="w-48 h-48 md:w-64 md:h-64 object-contain dark:invert" src="{{ asset('img/qr.png') }}" alt="QR Registration" />
+                <img class="w-48 h-48 md:w-48 md:h-48 lg:w-64 lg:h-64 object-contain dark:invert" src="{{ asset('img/qr.png') }}" alt="QR Registration" />
                 <p class="mt-4 text-center text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Scan to Join</p>
             </div>
         </div>
@@ -38,16 +38,16 @@
 {{-- ABOUT SECTION --}}
 <section class="bg-gray-50 dark:bg-gray-800 py-16 transition-colors duration-300">
     <div class="flex flex-col items-center px-4 mx-auto max-w-screen-xl gap-12 md:grid md:grid-cols-2 lg:px-6">
-        <div class="relative w-1/2 max-w-md mx-auto group">
+        <div class="relative w-3/4 md:w-3/4 lg:w-3/5 max-w-md mx-auto group">
             <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-20 group-hover:opacity-40 transition"></div>
             <img class="relative w-full transition-transform duration-500 group-hover:scale-105" src="{{ asset('img/logo.png') }}" alt="Logo Network IT Club">
         </div>
 
         <div class="text-center md:text-left">
-            <h2 class="mb-6 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white leading-tight">
+            <h2 class="mb-6 text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white leading-tight">
                 Membangun Masa Depan <br><span class="text-blue-600 dark:text-blue-400">Teknologi Bersama.</span>
             </h2>
-            <p class="mb-8 font-normal text-gray-600 dark:text-gray-400 md:text-lg leading-relaxed">
+            <p class="mb-8 text-md font-normal text-gray-600 dark:text-gray-400 md:text-lg leading-relaxed">
                 Network It Club atau bisa disebut NIC adalah extrakurikuler yang berfokus pada bidang IT,Kegiatan dalam NIC biasanya mencakup pelatihan, simulasi jaringan menggunakan software atau bahkan membangun infrastruktur jaringan sederhana.Extrakurikuler ini sangat relevan untuk siswa yang memilih jurusan TKJ(Teknik Komputer & Jaringan).
             </p>
             <a href="{{ route('about') }}" class="inline-flex items-center text-blue-700 dark:text-blue-400 font-bold group">

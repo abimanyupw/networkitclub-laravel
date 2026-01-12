@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\DashboardController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/',[LandingController::class, 'home'])->name('home');
 Route::get('/about',[LandingController::class, 'about'])->name('about');
@@ -23,6 +25,10 @@ Route::get('/terms', function () {
     return view('terms');
 });
 
-Route::get('/login', [LoginController::class, 'show'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard')->middleware('auth');
+
+
+
+Route::get('/login', [LoginController::class, 'show'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
