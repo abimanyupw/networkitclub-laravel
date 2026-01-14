@@ -4,8 +4,8 @@
     <h1 class=" my-3 text-xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Selamat Datang, {{ auth()->user()->name }}!</h1>
 <div class="mb-5 flex items-center justify-between">
     <div>
-        <h1 class="text-xl font-extrabold text-gray-900 dark:text-white tracking-tight">Statistik Overview</h1>
-        <p class="text-xs text-gray-500 dark:text-gray-400">Ringkasan performa Network IT Club.</p>
+        <h1 class="text-xl font-extrabold text-gray-900 dark:text-white tracking-tight">Dashboard</h1>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Network IT Club.</p>
     </div>
     <div class="text-xs font-medium text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full border border-blue-100 dark:border-blue-800">
         Update: {{ now()->format('d M Y') }}
@@ -21,7 +21,7 @@
             </div>
         </div>
         <p class="text-xl font-black text-gray-900 dark:text-white">{{ number_format($totalAnggota) }}</p>
-        <span class="text-[10px] text-green-500 font-medium">↑ 12% bulan ini</span>
+        <span class="text-[10px] text-green-500 font-medium">Total Anggota</span>
     </div>
 
     <div class="p-4 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm hover:shadow-md transition-shadow group">
@@ -75,21 +75,26 @@
         <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-4">Anggota Terbaru</h3>
         <div class="space-y-4">
             @foreach($recentMembers as $member)
-            <div class="flex items-center justify-between group cursor-pointer">
-                <div class="flex items-center space-x-3">
-                    <img class="w-7 h-7 rounded-full border border-gray-100 dark:border-gray-600" src="https://ui-avatars.com/api/?name={{ urlencode($member->name) }}&background=random" alt="">
+            <div class="flex items-center justify-between group">
+                <a href="/manageuser/{{ $member->id }}" class="flex items-center space-x-3">
+                    <img class="w-9 h-9 rounded-full border border-gray-100 dark:border-gray-600 object-cover shadow-sm" src="{{ $member->image ? asset('storage/' . $member->image) : 'https://ui-avatars.com/api/?name=' . urlencode($member->name) . '&background=random&color=fff&bold=true' }}" 
+                                alt="{{ $member->name }}">
+                                
                     <div class="min-w-0">
                         <p class="text-[15px] font-bold text-gray-900 truncate dark:text-white group-hover:text-blue-600 transition-colors">{{ $member->name }}</p>
                         <p class="text-[12px] text-gray-500 truncate dark:text-gray-400">{{ $member->email }}</p>
                     </div>
-                </div>
+                </a>
                 <svg class="w-3 h-3 text-gray-300 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             </div>
             @endforeach
         </div>
-        <button class="w-full mt-5 py-2 text-[12px] font-bold text-blue-600 bg-blue-50 dark:bg-blue-900/20 rounded-xl hover:bg-blue-100 transition-colors">
-            <a href="">Lihat Semua Anggota</a>
+        <form method="get" action="{{ route('manageuser.index') }}">
+            @csrf
+        <button class="cursor-pointer w-full mt-5 py-2 text-[12px] font-bold text-blue-600 bg-blue-50 dark:bg-blue-900/20 rounded-xl hover:bg-blue-100 transition-colors">
+            Lihat Semua Anggota
         </button>
+    </form>
     </div>
 </div>
 

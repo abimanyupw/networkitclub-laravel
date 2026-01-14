@@ -28,14 +28,15 @@
                 @auth
                     <div class="relative hidden lg:block">
                         <button @click="profileOpen = !profileOpen" @click.away="profileOpen = false" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-blue-300 border-2 border-white/50">
-                            <img class="w-9 h-9 rounded-full" src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=0D8ABC&color=fff" alt="user photo">
+                            <img class="w-10 h-10 rounded-full object-cover" src="{{ auth()->user()->image ? asset('img/' . auth()->user()->image) : 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) . '&background=0D8ABC&color=fff' }}" 
+                                        alt="{{ auth()->user()->name }}">
                         </button>
                         <div x-show="profileOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 z-50 border text-gray-700">
                              <div class="px-4 py-2 border-b">
                                 <p class="text-sm font-bold text-gray-900">{{ auth()->user()->name }}</p>
                                 <p class="text-xs text-gray-500 truncate">{{ auth()->user()->email }}</p>
                             </div>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-blue-50">Your Profile</a>
+                            <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm hover:bg-blue-50">Dashboard</a>
                             <a href="#" class="block px-4 py-2 text-sm hover:bg-blue-50">Settings</a>
                             <form action="{{ route('logout') }}" method="POST" class="border-t mt-1">
                                 @csrf
@@ -74,8 +75,10 @@
                     @auth
                         <div class="mt-2 pt-4 border-t border-white/20">
                             <div class="flex items-center px-3 mb-3">
-                                <div class="flex-shrink-0">
-                                    <img class="h-10 w-10 rounded-full border-2 border-white/30" src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=0D8ABC&color=fff" alt="">
+                              <div class="flex-shrink-0">
+                                    <img class="h-10 w-10 rounded-full border-2 border-white/30" 
+                                        src="{{ auth()->user()->image ? asset('img/' . auth()->user()->image) : 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) . '&background=0D8ABC&color=fff' }}" 
+                                        alt="{{ auth()->user()->name }}">
                                 </div>
                                 <div class="ml-3">
                                     <div class="text-sm font-medium text-white">{{ auth()->user()->name }}</div>
@@ -83,7 +86,7 @@
                                 </div>
                             </div>
                             <div class="space-y-1">
-                                <a href="#" class="block py-1 px-3 text-white/80 hover:bg-white/10 rounded">Your profile</a>
+                                <a href="{{ route('dashboard') }}" class="block py-1 px-3 text-white/80 hover:bg-white/10 rounded">Dashboard</a>
                                 <a href="" class="block py-1 px-3 text-white/80 hover:bg-white/10 rounded">Settings</a>
                                <form action="{{ route('logout') }}" method="POST">
                                     @csrf

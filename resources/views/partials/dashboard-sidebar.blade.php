@@ -5,7 +5,8 @@
             <div class="flex-1 px-3 space-y-1 divide-y divide-gray-200 dark:divide-gray-700">
                 <ul class="pb-2 space-y-2">
                     <li class="flex flex-col items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                        <img class="w-16 h-16 rounded-full border-2 border-white/50" src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}" alt="user photo">
+                        <img class="w-16 h-16 rounded-full border-2 border-white/50 object-cover" src="{{ auth()->user()->image ? asset('img/' . auth()->user()->image) : 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) . '&background=0D8ABC&color=fff' }}" 
+                                        alt="{{ auth()->user()->name }}">
                     <span class=" mt-2 text-black dark:text-white text-md font-medium mr-2">{{ auth()->user()->name }}</span>
                     <span class="text-[10px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 px-2 py-0.5 bg-blue-200 dark:bg-blue-700/20 rounded">
                                             {{ auth()->user()->role }}
@@ -14,9 +15,21 @@
                     </li>
                     <p class="text-xs font-bold text-gray-500 uppercase dark:text-gray-400">Main Navigation</p>
                     <li>
-                        <a href="#" class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a href="{{ route('dashboard') }}" class="flex items-center p-2 text-base font-medium {{ request()->is('dashboard*') ? 'text-gray-900 rounded-lg bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-700':'text-gray-900 rounded-lg hover:text-black dark:hover:text-white hover:bg-gray-200 dark:text-white/70 dark:hover:bg-gray-700'}}">
                             <svg class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
                             <span class="ml-3">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/manageuser" class="flex items-center p-2 text-base font-medium {{ request()->is('manageuser*') ? 'text-gray-900 rounded-lg bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-700':'text-gray-900 rounded-lg hover:text-black dark:hover:text-white hover:bg-gray-200 dark:text-white/70 dark:hover:bg-gray-700'}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                fill="currentColor">
+                            <path d="M12 12a4.5 4.5 0 100-9 4.5 4.5 0 000 9z"/>
+                            <path d="M4 20a8 8 0 0116 0z"/>
+                            </svg>
+
+
+                            <span class="ml-3">Anggota</span>
                         </a>
                     </li>
                     <li>

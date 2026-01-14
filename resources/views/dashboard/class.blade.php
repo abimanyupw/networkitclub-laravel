@@ -59,7 +59,7 @@
                             <div class="group relative bg-white dark:bg-[#1a1d23] rounded-3xl overflow-hidden border border-gray-300 dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1">
 
                                 <div class="aspect-video overflow-hidden relative">
-                                    <img src="{{ asset('img/' . ($material->thumbnail ?? $course->image)) }}"
+                                    <img src="{{ asset('storage/' . ($material->thumbnail ?? $course->image)) }}"
                                         alt="{{ $material->title }}"
                                         class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->enum('role', ['developer','admin', 'teknisi','siswa'])->default('siswa');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

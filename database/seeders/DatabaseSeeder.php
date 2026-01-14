@@ -33,7 +33,8 @@ class DatabaseSeeder extends Seeder
             'role' => 'developer',
             'email'=> 'abimanyupw@gmail.com',
             'password' => Hash::make('Abimanyu237'),
-            'remember_token' => Str::random(10)
+            'remember_token' => Str::random(10),
+            'image' => 'abimanyu.jpg'
         ]);
 
         Course::create([

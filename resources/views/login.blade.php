@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Network IT Club</title>
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}" />
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
@@ -51,7 +52,7 @@
                 @csrf
                 
                 <div class="space-y-2">
-                    <label class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] ml-1">Identity</label>
+                    <label class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] ml-1">Username</label>
                     <div class="relative group">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-blue-500 transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
@@ -64,7 +65,7 @@
 
                 <div class="space-y-2">
                     <div class="flex justify-between items-center px-1">
-                        <label class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">Access Key</label>
+                        <label class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">Password</label>
                     </div>
                     <div class="relative group" x-data="{ show: false }">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-blue-500 transition-colors">
@@ -92,22 +93,49 @@
                         </div>
                         <span class="ml-3 text-[11px] font-bold text-slate-500 group-hover:text-slate-300 uppercase tracking-widest transition-colors">Keep Session</span>
                     </label>
-                    
-                    <a href="#" class="text-[10px] font-extrabold text-blue-500/80 hover:text-blue-400 uppercase tracking-tighter transition-colors">Key Recovery</a>
                 </div>
-                  @if ($errors->any())
-                        <div class="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/30 dark:text-red-300">
-                            {{ $errors->first() }}
-                        </div>
-                    @endif
+                                    {{-- Alert Success --}}
+            @if (session('success'))
+                <div id="alert-success" class="flex items-center p-4 mb-4 text-emerald-800 rounded-lg bg-emerald-50 dark:bg-slate-800 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 shadow-sm transition-all duration-300" role="alert">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div class="ml-3 text-sm font-bold tracking-wide">
+                        {{ session('success') }}
+                    </div>
+                    <button type="button" onclick="document.getElementById('alert-success').remove()" class="ml-auto -mx-1.5 -my-1.5 bg-emerald-50 text-emerald-500 rounded-lg focus:ring-2 focus:ring-emerald-400 p-1.5 hover:bg-emerald-200 inline-flex items-center justify-center h-8 w-8 dark:bg-slate-800 dark:text-emerald-400 dark:hover:bg-slate-700">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                    </button>
+                </div>
+            @endif
+
+            {{-- Alert Error (Opsional) --}}
+            @if (session('error'))
+                <div id="alert-error" class="flex items-center p-4 mb-4 text-rose-800 rounded-lg bg-rose-50 dark:bg-slate-800 dark:text-rose-400 border border-rose-200 dark:border-rose-800 shadow-sm" role="alert">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div class="ml-3 text-sm font-bold tracking-wide">
+                        {{ session('error') }}
+                    </div>
+                    <button type="button" onclick="document.getElementById('alert-error').remove()" class="ml-auto -mx-1.5 -my-1.5 bg-rose-50 text-rose-500 rounded-lg focus:ring-2 focus:ring-rose-400 p-1.5 hover:bg-rose-200 inline-flex items-center justify-center h-8 w-8 dark:bg-slate-800 dark:text-rose-400 dark:hover:bg-slate-700">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                    </button>
+                </div>
+            @endif
 
                 <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-blue-500/20 active:scale-[0.98] uppercase tracking-widest text-sm">
-                    Authorize
+                    Log in
                 </button>
             </form>
 
             <div class="mt-8 pt-6 border-t border-slate-800/50 text-center">
-                <a href="#" class="text-xs font-bold text-blue-500 hover:text-blue-400 transition-colors uppercase tracking-widest">Request Access Account</a>
+                <a href="{{ route('register') }}" class="text-xs font-bold text-blue-500 hover:text-blue-400 transition-colors uppercase tracking-widest">Request Access Account</a>
             </div>
           
 

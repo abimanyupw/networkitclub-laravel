@@ -35,7 +35,7 @@
                     @if($material->video_url)
                         <iframe class="w-full h-full" src="{{ $material->video_url }}" frameborder="0" allowfullscreen></iframe>
                     @else
-                        <img src="{{ asset('img/' . ($material->thumbnail ?? $course->image)) }}" 
+                        <img src="{{ asset('storage/' . ($material->thumbnail ?? $course->image)) }}" 
                              class="w-full h-full object-cover">
                     @endif
                 </div>
