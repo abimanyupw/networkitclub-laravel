@@ -3,41 +3,25 @@
 @section('content')
 
     <div class="mb-8">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white italic">Detail Profil Anggota</h1>
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white italic">Detail Kategori Materi</h1>
         <nav class="mt-2 flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12a4.5 4.5 0 100-9 4.5 4.5 0 000 9z"/>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 20a8 8 0 0116 0z"/>
             </svg>
-            <a href="{{ route('manageuser.index') }}" class="hover:underline font-medium">Manajemen Anggota</a>
+            <a href="{{ route('manageuser.index') }}" class="hover:underline font-medium">Manajemen Kategori Materi</a>
             <span class="text-gray-400">/</span>
-            <span class="text-gray-500 dark:text-gray-400 font-medium">Detail Anggota</span>
+            <span class="text-gray-500 dark:text-gray-400 font-medium">Detail Kategori Materi</span>
         </nav>
     </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div class="lg:col-span-1">
-                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-xl border border-gray-100 dark:border-gray-800 text-center">
-                    <img src="{{ $user->image ? asset('storage/' . $user->image) : 'https://ui-avatars.com/api/?name=' . urlencode($user->name) . '&background=0D8ABC&color=fff&size=200&bold=true' }}" 
-                         class="w-40 h-40 mx-auto rounded-full object-cover border-4 border-blue-500/20 shadow-2xl">
-                    
-                    <div class="mt-4">
-                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">{{ $user->name }}</h3>
-                        <p class="text-blue-600 dark:text-blue-400 font-medium text-sm">@ {{ $user->username }}</p>
-                    </div>
-
-                    <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-800">
-                        <span class="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest {{ $user->role == 'admin' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700' }}">
-                            {{ $user->role }}
-                        </span>
-                    </div>
-                </div>
-            </div>
+            
 
             <div class="lg:col-span-2">
                 <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800 overflow-hidden">
                     <div class="p-8 space-y-6">
-                        <h4 class="text-lg font-bold text-gray-800 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Informasi Akun</h4>
+                        <h4 class="text-lg font-bold text-gray-800 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">Informasi Kategori</h4>
                         
                         <div class="grid grid-cols-1 gap-6">
                             <div class="flex items-center gap-4">
@@ -47,8 +31,8 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-bold tracking-wider">Nama Lengkap</p>
-                                    <p class="text-gray-800 dark:text-gray-200 font-medium text-lg">{{ $user->name }}</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-bold tracking-wider">Name</p>
+                                    <p class="text-gray-800 dark:text-gray-200 font-medium text-lg">{{ $category->name }}</p>
                                 </div>
                             </div>
 
@@ -59,8 +43,8 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-bold tracking-wider">Email</p>
-                                    <p class="text-gray-800 dark:text-gray-200 font-medium text-lg">{{ $user->email }}</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-bold tracking-wider">Slug</p>
+                                    <p class="text-gray-800 dark:text-gray-200 font-medium text-lg">{{ $category->slug }}</p>
                                 </div>
                             </div>
 
@@ -71,8 +55,8 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-bold tracking-wider">Terdaftar Sejak</p>
-                                    <p class="text-gray-800 dark:text-gray-200 font-medium text-lg">{{ $user->created_at->format('d M Y') }}</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-bold tracking-wider">Dibuat Sejak</p>
+                                    <p class="text-gray-800 dark:text-gray-200 font-medium text-lg">{{ $category->created_at->format('d M Y') }}</p>
                                 </div>
                             </div>
                         </div>

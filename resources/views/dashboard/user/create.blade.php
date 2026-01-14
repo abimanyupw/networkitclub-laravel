@@ -5,11 +5,12 @@
         <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white italic">Tambah Anggota Baru</h1>
         <nav class="mt-2 flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12a4.5 4.5 0 100-9 4.5 4.5 0 000 9z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 20a8 8 0 0116 0z"/>
             </svg>
-            <a href="/manageuser" class="hover:underline font-medium">Manajemen Pengguna</a>
+            <a href="/manageuser" class="hover:underline font-medium">Manajemen Anggota</a>
             <span class="text-gray-400">/</span>
-            <span class="text-gray-500 dark:text-gray-400 font-medium">Tambah Data</span>
+            <span class="text-gray-500 dark:text-gray-400 font-medium">Tambah Anggota</span>
         </nav>
     </div>
         <form action="/manageuser" method="POST" enctype="multipart/form-data">
@@ -117,7 +118,7 @@
                                 Batal
                             </a>
                             <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2.5 rounded-xl font-bold shadow-lg shadow-blue-500/30 transform transition active:scale-95">
-                                Simpan Anggota Baru
+                                Simpan
                             </button>
                         </div>
                     </div>

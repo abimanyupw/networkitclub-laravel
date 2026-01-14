@@ -2,10 +2,18 @@
 
 @section('content')
 <div class="min-h-screen text-gray-900 dark:text-white">
-    <div class="mb-6">
-        <h1 class="text-3xl font-bold italic tracking-tight">Manajemen Anggota</h1>
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white italic">Manajemen Anggota</h1>
+        <nav class="mt-2 flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12a4.5 4.5 0 100-9 4.5 4.5 0 000 9z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 20a8 8 0 0116 0z"/>
+            </svg>
+            <a href="/manageuser" class="hover:underline font-medium">Manajemen Anggota</a>
+            <span class="text-gray-400">/</span>
+            <span class="text-gray-500 dark:text-gray-400 font-medium">Daftar Anggota</span>
+        </nav>
     </div>
-
     <div class="mb-4 text-2xl font-semibold border-l-4 border-blue-600 pl-3">
         Daftar Anggota
     </div>

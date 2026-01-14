@@ -31,7 +31,7 @@ class ManageCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.category.create');
     }
 
     /**
@@ -45,18 +45,23 @@ class ManageCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        $category = Category::where('slug', $slug)->firstOrFail();
+        return view('dashboard.category.show', compact('category'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($slug)
     {
-        //
+        $category = Category::where('slug', $slug)->firstOrFail();
+        return view('dashboard.category.edit', compact('category'));
     }
+
+
+
 
     /**
      * Update the specified resource in storage.

@@ -34,7 +34,16 @@ class DatabaseSeeder extends Seeder
             'email'=> 'abimanyupw@gmail.com',
             'password' => Hash::make('Abimanyu237'),
             'remember_token' => Str::random(10),
-            'image' => 'abimanyu.jpg'
+            'image' => ''
+        ]);
+        User::create([
+            'name' => 'Hamdan Trisnawan',
+            'username' => 'hamdan',
+            'role' => 'admin',
+            'email'=> 'hamdantr@gmail.com',
+            'password' => Hash::make('12345678'),
+            'remember_token' => Str::random(10),
+            'image' => ''
         ]);
 
         Course::create([
@@ -67,26 +76,31 @@ class DatabaseSeeder extends Seeder
             Category::create([
                 'name' => 'Mikrotik',
                 'slug' => 'mikrotik',
+                'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, cum!', 
                 
             ]);
             Category::create([
                 'name' => 'Linux Server',
                 'slug' => 'linux-server',
+                'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, cum!', 
                
             ]);
             Category::create([
                 'name' => 'Fiber Optik',
                 'slug' => 'fiber-optik',
+                'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, cum!', 
                
             ]);
             Category::create([
                 'name' => 'Cisco Packet Tracer',
                 'slug' => 'cisco-packet-tracer',
+                'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, cum!', 
               
             ]);
             Category::create([
                 'name' => 'Binary Exploitation',
                 'slug' => 'binary-exploitation',
+                'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, cum!', 
               
             ]);
 

@@ -11,7 +11,8 @@ class Category extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'slug'
+        'slug',
+        'description'
     ];
     public function materials()
     {
