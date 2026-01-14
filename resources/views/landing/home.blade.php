@@ -47,7 +47,7 @@
             <h2 class="mb-6 text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white leading-tight">
                 Membangun Masa Depan <br><span class="text-blue-600 dark:text-blue-400">Teknologi Bersama.</span>
             </h2>
-            <p class="mb-8 text-md font-normal text-gray-600 dark:text-gray-400 md:text-lg leading-relaxed">
+            <p class="mb-8 text-lg font-normal text-gray-800 dark:text-gray-400 md:text-xl leading-relaxed">
                 Network It Club atau bisa disebut NIC adalah extrakurikuler yang berfokus pada bidang IT,Kegiatan dalam NIC biasanya mencakup pelatihan, simulasi jaringan menggunakan software atau bahkan membangun infrastruktur jaringan sederhana.Extrakurikuler ini sangat relevan untuk siswa yang memilih jurusan TKJ(Teknik Komputer & Jaringan).
             </p>
             <a href="{{ route('about') }}" class="inline-flex items-center text-blue-700 dark:text-blue-400 font-bold group">

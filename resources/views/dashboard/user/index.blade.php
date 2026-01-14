@@ -88,21 +88,21 @@
 @endif
         <table class="w-full text-left border-collapse">
             <thead>
-                <tr class="bg-blue-100 text-sm font-bold text-gray-800 dark:bg-blue-200">
-                    <th class="border-b border-gray-200 px-4 py-4 dark:border-gray-500">No.</th>
-                    <th class="border-b border-gray-200 px-4 py-4 dark:border-gray-500">Username</th>
-                    <th class="border-b border-gray-200 px-4 py-4 dark:border-gray-500">Nama Lengkap</th>
-                    <th class="border-b border-gray-200 px-4 py-4 dark:border-gray-500">Email</th>
-                    <th class="border-b border-gray-200 px-4 py-4 dark:border-gray-500">Role</th>
-                    <th class="border-b border-gray-200 px-4 py-4 dark:border-gray-500 text-center text-gray-700">Aksi</th>
+                <tr class="bg-blue-100 text-sm font-bold text-black dark:bg-blue-400">
+                    <th class="border-b border-r border-gray-200 px-4 py-4 dark:border-gray-900">No.</th>
+                    <th class="border-b border-r border-gray-200 px-4 py-4 dark:border-gray-900">Username</th>
+                    <th class="border-b border-r border-gray-200 px-4 py-4 dark:border-gray-900">Nama Lengkap</th>
+                    <th class="border-b border-r border-gray-200 px-4 py-4 dark:border-gray-900">Email</th>
+                    <th class="border-b border-r border-gray-200 px-4 py-4 dark:border-gray-900">Role</th>
+                    <th class="border-b border-r border-gray-200 px-4 py-4 dark:border-gray-900 text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody class="text-sm">
                 @forelse ($users as $user)
                 <tr class="bg-white hover:bg-blue-50/50 dark:bg-slate-900 dark:hover:bg-slate-800/80 transition-colors">
-                    <td class="border-b border-gray-100 px-4 py-3 dark:border-gray-800 text-center font-medium">{{ $loop->iteration }}</td>
-                    <td class="border-b border-gray-100 px-4 py-3 dark:border-gray-800 font-semibold">{{ $user->username }}</td>
-                    <td class="border-b border-gray-100 px-4 py-3 dark:border-gray-800">
+                    <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 text-center font-medium">{{ $loop->iteration }}</td>
+                    <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 font-semibold">{{ $user->username }}</td>
+                    <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800">
                         <div class="flex items-center gap-3">
                             <img class="w-9 h-9 rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-sm" 
                                  src="{{ $user->image ? asset('storage/' . $user->image) : 'https://ui-avatars.com/api/?name=' . urlencode($user->name) . '&background=0D8ABC&color=fff&bold=true' }}" 
@@ -110,13 +110,13 @@
                             <span class="font-medium text-gray-700 dark:text-gray-300">{{ $user->name }}</span>
                         </div>
                     </td>
-                    <td class="border-b border-gray-100 px-4 py-3 dark:border-gray-800 text-gray-500 dark:text-gray-400">{{ $user->email }}</td>
-                    <td class="border-b border-gray-100 px-4 py-3 dark:border-gray-800 uppercase">
+                    <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 text-gray-800 dark:text-gray-400">{{ $user->email }}</td>
+                    <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 uppercase">
                         <span class="px-2 py-1 rounded text-[10px] font-bold {{ $user->role == 'developer' ? 'bg-indigo-100 text-indigo-700' : 'bg-sky-100 text-sky-700' }}">
                             {{ $user->role }}
                         </span>
                     </td>
-                    <td class="border-b border-gray-100 px-4 py-3 dark:border-gray-800">
+                    <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800">
                         @if (auth()->user()->name == $user->name)
                         <div></div>
                         @else     

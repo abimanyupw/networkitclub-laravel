@@ -2,19 +2,19 @@
     <div class="mx-auto max-w-screen-xl">
         <div class="md:flex md:justify-between gap-10">
             <div class="mb-10 md:mb-0 md:w-1/2">
-                <a href="/" class="flex items-center group">
+                <a href="/" class="flex group flex-col items-start">
                     <div class="p-1 bg-white rounded-xl mr-4 transition-transform group-hover:rotate-12 duration-300">
                         <img src="{{ asset('img/logo.png') }}" alt="Logo" class="h-12 w-auto" alt="Logo Network IT Club" />
                     </div>
-                    <div class="flex-col self-center font-semibold whitespace-nowrap text-white">
-                        <h1 class="text-2xl font-black tracking-tight leading-none">
+                    <div class="flex-col mt-1 font-medium whitespace-nowrap text-white">
+                        <h1 class="text-2xl font-bold tracking-tight leading-none">
                             Network IT Club
                         </h1>
                         <span class="text-sm font-medium text-white uppercase tracking-widest">SMK Negeri 1 Pungging</span>
                     </div>
                 </a>
-                <p class="mt-6 text-white font-bold leading-relaxed text-md w-3/4">
-                    Network It Club atau bisa disebut NIC adalah extrakurikuler yang berfokus pada bidang IT,Kegiatan dalam NIC biasanya mencakup pelatihan, simulasi jaringan menggunakan software atau bahkan membangun infrastruktur jaringan sederhana.
+                <p class="mt-3 text-white font-bold leading-relaxed text-md w-3/4">
+                    Network It Club atau bisa disebut NIC adalah extrakurikuler yang berfokus pada bidang IT,Kegiatan dalam NIC biasanya mencakup pelatihan.
                 </p>
             </div>
 
