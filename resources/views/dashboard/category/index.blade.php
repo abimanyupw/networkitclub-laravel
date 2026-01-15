@@ -102,7 +102,7 @@
                         </div>
                     </td>
                     <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 text-gray-700 dark:text-gray-400">{{ $category->slug }}</td>
-                    <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 text-gray-700 dark:text-gray-400">{{ $category->description }}</td>
+                    <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 text-gray-700 dark:text-gray-400">{{ Str::limit($category->description,20) }}</td>
                     <td class="border-b border-gray-300 px-4 py-3 dark:border-gray-800">     
                         <div class="flex justify-center gap-2">
                             <a href="/managecategory/{{ $category->slug }}" class="bg-sky-400 p-1.5 rounded hover:bg-sky-500 transition" title="Edit">
@@ -137,6 +137,9 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
+    <div class="mt-6">
+        {{ $categories->links() }}
     </div>
 </div>
 @endsection

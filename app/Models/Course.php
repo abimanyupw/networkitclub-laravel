@@ -15,6 +15,16 @@ class Course extends Model
         'image',
     ];
 
+       public function sluggable(): array
+    {
+        
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
     public function materials()
     {
         return $this->hasMany(Material::class);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ManageCategoryController extends Controller
 {
@@ -40,8 +41,17 @@ class ManageCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name'        => 'required|string|max:255',
+            'slug'        => 'required|string|min:3|max:50|unique:categories,slug',
+            'description' => 'required|string|min:10',
+        ]);
+
+        Category::create($validatedData);
+
+        return redirect('/managecategory')->with('success', 'Kategori berhasil ditambahkan');
     }
+
 
     /**
      * Display the specified resource.
@@ -67,9 +77,19 @@ class ManageCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+   
+    public function update(Request $request, Category $managecategory)
     {
-        //
+        $validated = $request->validate([
+            'name'        => 'required|string|max:255',
+            'slug'        => 'required|string|min:3|max:50|unique:categories,slug,' . $managecategory->slug . ',slug',
+            'description' => 'required|string|min:10',
+        ]);
+
+        $managecategory->update($validated);
+
+        return redirect('/managecategory')
+            ->with('success', 'Kategori berhasil diperbarui');
     }
 
     /**
@@ -83,5 +103,13 @@ class ManageCategoryController extends Controller
         $category->delete();
 
         return redirect()->route('managecategory.index')->with('success', 'Kategori Materi berhasil dihapus secara permanen.');
+    }
+
+
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Category::class, 'slug', $request->name);
+        return response()->json(['slug' => $slug]);
     }
 }

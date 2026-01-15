@@ -6,6 +6,7 @@ use App\Models\User;
 
 use App\Models\Course;
 use App\Models\Category;
+use App\Models\Information;
 use App\Models\Material;
 use Illuminate\Http\Request;
 
@@ -33,6 +34,7 @@ class DashboardController extends Controller
             'totalKelas'   => Course::count(),
             'totalKategori'=> Category::count(),
             'recentMembers' => User::latest()->take(5)->get(),
+            'recentInformation' => Information::latest()->take(5)->get(),
             // Kirim data asli ke view
             'labels' => $labels,
             'grafikAnggota' => $grafikAnggota,

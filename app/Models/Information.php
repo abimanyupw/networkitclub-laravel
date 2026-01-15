@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Material extends Model
+class Information extends Model
 {
+    protected $table = 'informations';
     use Sluggable,HasFactory;
      public function sluggable(): array
     {
@@ -19,28 +20,16 @@ class Material extends Model
         ];
     }
     protected $fillable = [
-        'course_id',
-        'category_id',
         'title',
         'slug',
-        'description',
         'content',
-        'thumbnail'
+
     ];
 
-
-    public function course()
-    {
-        return $this->belongsTo(Course::class);
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
 
     public function getRouteKeyName()
     {
         return 'slug';
     }
+    
 }

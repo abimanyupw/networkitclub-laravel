@@ -26,13 +26,13 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Name</label>
-                                    <input type="text" name="name" value="{{ old('name', $category->name) }}" 
+                                    <input type="text" id="name" name="name" value="{{ old('name', $category->name) }}" 
                                            class="w-full px-4 py-2.5 rounded-xl border @error('name') border-red-500 @else border-gray-200 dark:border-gray-700 @enderror bg-gray-50 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 transition outline-none">
                                     @error('name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                                 </div>
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Slug</label>
-                                    <input type="text" name="slug" value="{{ old('slug', $category->slug) }}" 
+                                    <input type="text" id="slug" name="slug" value="{{ old('slug', $category->slug) }}" 
                                            class="w-full px-4 py-2.5 rounded-xl border @error('slug') border-red-500 @else border-gray-200 dark:border-gray-700 @enderror bg-gray-50 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 transition outline-none">
                                     @error('slug') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                                 </div> 
@@ -57,4 +57,19 @@
             </div>
         </form>
     </div>
+
+
+
+    <script>
+            const nameInput = document.querySelector('#name');
+            const slugInput = document.querySelector('#slug');
+
+            nameInput.addEventListener('change', function () {
+                fetch("{{ route('managecategory.checkSlug') }}?name=" + nameInput.value)
+                    .then(response => response.json())
+                    .then(data => {
+                        slugInput.value = data.slug;
+                    });
+            });
+        </script>
 @endsection

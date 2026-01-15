@@ -39,7 +39,9 @@
         <div class="flex items-center justify-between mb-2">
             <h3 class="text-gray-500 dark:text-gray-400 text-[10px] font-bold uppercase tracking-wider">Kelas</h3>
             <div class="p-1.5 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg group-hover:scale-110 transition-transform">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="30">
+            <path d="M128 96c0-35.3 28.7-64 64-64l352 0c35.3 0 64 28.7 64 64l0 240-96 0 0-16c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 16-129.1 0c10.9-18.8 17.1-40.7 17.1-64 0-70.7-57.3-128-128-128-5.4 0-10.8 .3-16 1l0-49zM333 448c-5.1-24.2-16.3-46.1-32.1-64L608 384c0 35.3-28.7 64-64 64l-211 0zM64 272a80 80 0 1 1 160 0 80 80 0 1 1 -160 0zM0 480c0-53 43-96 96-96l96 0c53 0 96 43 96 96 0 17.7-14.3 32-32 32L32 512c-17.7 0-32-14.3-32-32z"/>
+            </svg>
             </div>
         </div>
         <p class="text-xl font-black text-gray-900 dark:text-white">{{ $totalKelas }}</p>
@@ -113,23 +115,70 @@
         </div>
     </div>
 
-    <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm overflow-hidden">
-        <div class="bg-cyan-500 h-1"></div>
-        <div class="p-5">
-            <h3 class="text-cyan-600 dark:text-cyan-400 font-bold text-md mb-3 flex items-center">
-                <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
-                Jadwal Terdekat
-            </h3>
-            <div class="flex items-start justify-between bg-gray-50 dark:bg-gray-700/50 p-3 rounded-xl border border-gray-100 dark:border-gray-600">
-                <div>
-                    <p class="text-[11px] font-bold text-gray-900 dark:text-white">Lab TKJ D</p>
-                    <p class="text-[9px] text-gray-500 dark:text-gray-400">Jam 00:00 • 12 Jun 2025</p>
+    {{-- Bagian Informasi Penting --}}
+<div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm overflow-hidden">
+    <div class="bg-violet-600 h-1"></div>
+    <div class="p-5">
+        <h3 class="text-blue-600 dark:text-blue-400 font-bold text-md mb-4 flex items-center justify-between">
+            <span class="flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                </svg>
+                Informasi Terbaru
+            </span>
+            <a href="{{ route('manageinformation.index') }}" class="text-[10px] bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded-lg hover:bg-blue-100 transition-colors">Lihat Semua</a>
+        </h3>
+
+        <div class="space-y-4">
+            @forelse($recentInformation as $info)
+                <div class="group relative pl-4 border-l-2 border-blue-100 dark:border-gray-700 hover:border-blue-500 transition-colors">
+                    <a href="{{ route('manageinformation.show', $info->slug) }}" class="block">
+                        <h4 class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
+                            {{ $info->title }}
+                        </h4>
+                        <span class="text-[10px] text-gray-400 font-medium">
+                            {{ $info->created_at->diffForHumans() }}
+                        </span>
+                    </a>
                 </div>
-                <div class="text-[9px] font-bold px-2 py-0.5 bg-cyan-100 text-cyan-600 rounded-md">Besok</div>
-            </div>
+            @empty
+                <div class="text-center py-4">
+                    <p class="text-gray-400 text-xs italic">Belum ada informasi terbaru.</p>
+                </div>
+            @endforelse
         </div>
     </div>
 </div>
+</div>
+<style>
+ /* Styling agar tabel dari Summernote memiliki border dan padding */
+    .prose table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid #e2e8f0; /* Warna border abu-abu terang */
+    }
+    .prose th, .prose td {
+        border: 1px solid #e2e8f0;
+        padding: 8px 12px;
+        text-align: left;
+    }
+    .prose th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+
+    /* Mode Gelap (Dark Mode) */
+    .dark .prose table, 
+    .dark .prose th, 
+    .dark .prose td {
+        border-color: #334155; /* Warna border untuk dark mode */
+    }
+    .dark .prose th {
+        background-color: #1e293b;
+    }
+    </style>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>

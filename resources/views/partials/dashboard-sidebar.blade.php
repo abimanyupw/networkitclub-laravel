@@ -53,6 +53,26 @@
                             <span class="ml-3">Kelas</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/managematerial" class="flex items-center p-2 text-base font-medium {{ request()->is('managematerial*') ? 'text-gray-900 rounded-lg bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-700':'text-gray-900 rounded-lg hover:text-black dark:hover:text-white hover:bg-gray-200 dark:text-white/70 dark:hover:bg-gray-700'}}">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                fill="currentColor">
+                            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+
+                            <span class="ml-3">Materi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/manageinformation" class="flex items-center p-2 text-base font-medium {{ request()->is('manageinformation*') ? 'text-gray-900 rounded-lg bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-700':'text-gray-900 rounded-lg hover:text-black dark:hover:text-white hover:bg-gray-200 dark:text-white/70 dark:hover:bg-gray-700'}}">
+                           <svg class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                            </svg>
+
+                            <span class="ml-3">Informasi</span>
+                        </a>
+                    </li>
                     
                 </ul>
 
