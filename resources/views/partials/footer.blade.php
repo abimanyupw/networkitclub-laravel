@@ -64,7 +64,7 @@
         <hr class="my-8 border-white/10 sm:mx-auto lg:my-10" />
 
         <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-lg text-white sm:text-center">
+            <span class="lg:text-lg text-white sm:text-md sm:text-center">
                 © 2025 <a href="/" class="hover:text-white font-bold transition-colors">Network IT Club</a>. All Rights Reserved.
             </span>
             

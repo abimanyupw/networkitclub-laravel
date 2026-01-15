@@ -7,6 +7,7 @@ use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManageUserController;
+use App\Http\Controllers\ManageCourseController;
 use App\Http\Controllers\ManageCategoryController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -31,6 +32,7 @@ Route::get('/terms', function () {
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard')->middleware('auth');
 Route::resource('/manageuser',ManageUserController::class)->middleware('auth');
 Route::resource('/managecategory',ManageCategoryController::class)->middleware('auth');
+Route::resource('/managecourse',ManageCourseController::class)->middleware('auth');
 
 
 

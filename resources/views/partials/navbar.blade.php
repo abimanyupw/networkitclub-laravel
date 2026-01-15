@@ -47,6 +47,7 @@
                 @else
                     <div class="hidden lg:flex gap-2">
                         <a href="{{ route('login') }}" class="text-white border border-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 hover:text-black">Log in</a>
+                        <a href="{{ route('register') }}" class="text-blue-600 border border-blue-600 px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 hover:bg-white hover:text-black">Sign in</a>
                     </div>
                 @endauth
 
@@ -97,8 +98,9 @@
                             </div>
                         </div>
                     @else
-                        <li class="grid grid-cols-1 gap-2 pt-4 border-t border-white/20 mt-4">
+                        <li class="grid grid-cols-2 gap-2 pt-4 border-t border-white/20 mt-4">
                             <a href="{{ route('login') }}" class="text-center border border-white py-2 rounded-lg">Log in</a>
+                            <a href="{{ route('register') }}" class="text-center border border-white py-2 rounded-lg">Sign in</a>
                         </li>
                     @endauth                    
                 </ul>

@@ -27,7 +27,7 @@
 
         <div class="flex justify-center items-center md:col-span-5 mt-10 md:mt-0">
             {{-- Card QR Code --}}
-            <div class="relative p-4 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="relative p-4 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-blue-100 dark:border-gray-700">
                 <img class="w-48 h-48 md:w-48 md:h-48 lg:w-64 lg:h-64 object-contain dark:invert" src="{{ asset('img/qr.png') }}" alt="QR Registration" />
                 <p class="mt-4 text-center text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Scan to Join</p>
             </div>
@@ -162,7 +162,7 @@
             @endphp
 
             @foreach($faqs as $faq)
-            <details class="group rounded-2xl bg-slate-50 dark:bg-gray-800 p-6 transition-all border border-transparent open:border-blue-200 dark:open:border-blue-800 open:bg-white dark:open:bg-gray-800">
+            <details class="group rounded-2xl bg-gray-200 dark:bg-gray-800 p-6 transition-all border border-transparent open:border-blue-200 dark:open:border-blue-800 open:bg-white dark:open:bg-gray-800">
                 <summary class="flex cursor-pointer list-none items-center justify-between font-bold text-gray-900 dark:text-white">
                     {{ $faq['q'] }}
                     <span class="transition-transform duration-300 group-open:rotate-180 text-blue-600 dark:text-blue-400">

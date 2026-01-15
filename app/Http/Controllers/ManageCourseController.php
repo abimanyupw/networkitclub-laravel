@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
-class ManageCategoryController extends Controller
+class ManageCourseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-   public function index(Request $request)
+    public function index(Request $request)
     {
-        $query = Category::query();
+        $query = Course::query();
 
         // SEARCH
         if ($request->filled('search')) {
             $query->where(function ($q) use ($request) {
-                $q->where('name', 'like', "%{$request->search}%")
+                $q->where('title', 'like', "%{$request->search}%")
                 ->orWhere('slug', 'like', "%{$request->search}%")
                 ->orWhere('description', 'like', "%{$request->search}%");
             });
         }
-        $categories = $query->latest()->paginate(10)->withQueryString();
-        return view('dashboard.category.index', compact('categories'));
+        $course = $query->latest()->paginate(10)->withQueryString();
+        return view('dashboard.course.index', compact('course'));
     }
 
 
@@ -32,7 +32,7 @@ class ManageCategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.category.create');
+        return view('dashboard.course.create');
     }
 
     /**
@@ -46,10 +46,10 @@ class ManageCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $slug)
+    public function show($slug)
     {
-        $category = Category::where('slug', $slug)->firstOrFail();
-        return view('dashboard.category.show', compact('category'));
+        $course = Course::where('slug', $slug)->firstOrFail();
+        return view('dashboard.course.show', compact('course'));
     }
 
     /**
@@ -57,12 +57,9 @@ class ManageCategoryController extends Controller
      */
     public function edit($slug)
     {
-        $category = Category::where('slug', $slug)->firstOrFail();
-        return view('dashboard.category.edit', compact('category'));
+        $course = Course::where('slug', $slug)->firstOrFail();
+        return view('dashboard.course.edit', compact('course'));
     }
-
-
-
 
     /**
      * Update the specified resource in storage.
@@ -77,11 +74,11 @@ class ManageCategoryController extends Controller
      */
     public function destroy($slug)
     {
-          $category = Category::where('slug', $slug)->firstOrFail();
+        $course = Course::where('slug', $slug)->firstOrFail();
 
         // Hapus data dari database
-        $category->delete();
+        $course->delete();
 
-        return redirect()->route('managecategory.index')->with('success', 'Kategori Materi berhasil dihapus secara permanen.');
+        return redirect()->route('managecategory.index')->with('success', 'Kelas berhasil dihapus secara permanen.');
     }
 }
