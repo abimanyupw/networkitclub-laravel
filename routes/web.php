@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
@@ -32,23 +33,42 @@ Route::get('/terms', function () {
 });
 
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard')->middleware('auth');
+Route::middleware(['auth', 'role:admin,developer'])
+    ->group(function () {
+        Route::resource('/manageuser', ManageUserController::class);
+});
 
-Route::resource('/manageuser',ManageUserController::class)->middleware('auth');
+Route::middleware(['auth', 'role:admin,developer,teknisi'])
+    ->group(function () {
 
-Route::get('/managecategory/checkSlug',[ManageCategoryController::class, 'checkSlug'])->middleware('auth')->name('managecategory.checkSlug');
-Route::resource('/managecategory',ManageCategoryController::class)->middleware('auth');
+        Route::get('/managecategory/checkSlug', [ManageCategoryController::class, 'checkSlug'])
+            ->name('managecategory.checkSlug');
+        Route::resource('/managecategory', ManageCategoryController::class);
 
-Route::get('/managematerial/checkSlug',[ManageMaterialController::class, 'checkSlug'])->middleware('auth')->name('managematerial.checkSlug');
-Route::resource('/managematerial',ManageMaterialController::class)->middleware('auth');
-Route::post('/managematerial/upload-image', [ManageMaterialController::class, 'uploadImage'])->name('managematerial.uploadImage');
+        Route::get('/managematerial/checkSlug', [ManageMaterialController::class, 'checkSlug'])
+            ->name('managematerial.checkSlug');
+        Route::post('/managematerial/upload-image', [ManageMaterialController::class, 'uploadImage'])
+            ->name('managematerial.uploadImage');
+        Route::resource('/managematerial', ManageMaterialController::class);
+        Route::get('/manageinformation/checkSlug', [ManageInformationController::class, 'checkSlug'])
+            ->name('manageinformation.checkSlug');
+        Route::resource('/manageinformation', ManageInformationController::class);
+});
+Route::middleware(['auth', 'role:admin,developer'])
+    ->group(function () {
 
-Route::get('/manageinformation/checkSlug',[ManageInformationController::class, 'checkSlug'])->middleware('auth')->name('manageinformation.checkSlug');
-Route::resource('/manageinformation',ManageInformationController::class)->middleware('auth');
+        Route::get('/managecourse/checkSlug', [ManageCourseController::class, 'checkSlug'])
+            ->name('managecourse.checkSlug');
+        Route::resource('/managecourse', ManageCourseController::class);
+});
 
 
-Route::get('/managecourse/checkSlug',[ManageCourseController::class, 'checkSlug'])->middleware('auth')->name('managecourse.checkSlug');
-Route::resource('/managecourse',ManageCourseController::class)->middleware('auth');
+Route::middleware('auth')->group(function () {
 
+    Route::get('/settings', [SettingController::class, 'show'])->name('settings.show');
+    Route::get('/settings/profile', [SettingController::class, 'edit'])->name('settings.edit');
+    Route::put('/settings/profile', [SettingController::class, 'update'])->name('settings.update');
+});
 
 
 

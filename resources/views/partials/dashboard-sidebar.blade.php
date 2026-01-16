@@ -25,6 +25,7 @@
                             <span class="ml-3">Classes</span>
                         </a>
                     </li>
+                    @can('manage')
                     <p class="text-xs font-bold text-gray-500 uppercase dark:text-gray-400">Manage</p>
                     <li>
                         <a href="/manageuser" class="flex items-center p-2 text-base font-medium {{ request()->is('manageuser*') ? 'text-gray-900 rounded-lg bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-700':'text-gray-900 rounded-lg hover:text-black dark:hover:text-white hover:bg-gray-200 dark:text-white/70 dark:hover:bg-gray-700'}}">
@@ -73,7 +74,7 @@
                             <span class="ml-3">Informasi</span>
                         </a>
                     </li>
-                    
+                    @endcan
                 </ul>
 
                 <div class="pt-4 space-y-2">

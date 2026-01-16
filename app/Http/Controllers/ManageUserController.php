@@ -78,11 +78,11 @@ class ManageUserController extends Controller
     /**
      * Display the specified resource.
      */
-        public function show(string $id)
-    {
-        $user = User::findOrFail($id);
-        return view('dashboard.user.show', compact('user'));
-    }
+            public function show(string $id)
+        {
+            $user = User::findOrFail($id);
+            return view('dashboard.user.show', compact('user'));
+        }
     /**
      * Show the form for editing the specified resource.
      */
@@ -97,6 +97,7 @@ class ManageUserController extends Controller
         public function update(Request $request, string $id)
         {
             $user = User::findOrFail($id);
+            $this->authorize('update', $user);
 
             $rules = [
                 'name'     => 'required|string|max:255',
@@ -147,23 +148,24 @@ class ManageUserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+        public function destroy(string $id)
     {
         $user = User::findOrFail($id);
 
-        // Mencegah menghapus diri sendiri yang sedang login
+        $this->authorize('delete', $user);
+
         if ($user->id === auth()->id()) {
             return back()->with('error', 'Anda tidak diperbolehkan menghapus akun sendiri!');
         }
 
-        // Hapus foto profil dari storage jika ada
         if ($user->image) {
             Storage::disk('public')->delete($user->image);
         }
 
-        // Hapus data dari database
         $user->delete();
 
-        return redirect()->route('manageuser.index')->with('success', 'Anggota berhasil dihapus secara permanen.');
+        return redirect()->route('manageuser.index')
+            ->with('success', 'Anggota berhasil dihapus secara permanen.');
     }
+
 }

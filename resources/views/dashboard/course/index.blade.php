@@ -95,7 +95,7 @@
             <tbody class="text-sm">
                 @forelse ($courses as $course)
                 <tr class="bg-white/90 hover:bg-blue-50/50 dark:bg-slate-900 dark:hover:bg-slate-800/80 transition-colors">
-                    <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 text-center font-medium">{{ $loop->iteration }}</td>
+                    <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 text-center font-medium">{{ ($courses->currentPage() - 1) * $courses->perPage() + $loop->iteration }}</td>
                     <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800">
                         <div class="flex items-center gap-3">
                             <span class="font-medium text-gray-700 dark:text-gray-300">{{ $course->title }}</span>
@@ -105,7 +105,7 @@
                     <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 text-gray-700 dark:text-gray-400">{{ Str::limit($course->description,20) }}</td>
                     <td class="border-b border-gray-300 px-4 py-3 dark:border-gray-800">     
                         <div class="flex justify-center gap-2">
-                            <a href="/managecourse/{{ $course->slug }}" class="bg-sky-400 p-1.5 rounded hover:bg-sky-500 transition" title="Edit">
+                            <a href="/managecourse/{{ $course->slug }}" class="bg-sky-400 p-1.5 rounded hover:bg-sky-500 transition" title="View">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5 c4.478 0 8.268 2.943 9.542 7 -1.274 4.057-5.064 7-9.542 7 -4.477 0-8.268-2.943-9.542-7z" />
