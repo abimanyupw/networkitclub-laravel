@@ -9,7 +9,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 20a8 8 0 0116 0z"/>
                 
             </svg>
-            <a href="/manageuser" class="hover:underline font-medium">Manajemen Kategori Materi</a>
+            <a href="/managecategory" class="hover:underline font-medium">Manajemen Kategori Materi</a>
             <span class="text-gray-400">/</span>
             <span class="text-gray-500 dark:text-gray-400 font-medium">Edit Kategori Materi</span>
         </nav>

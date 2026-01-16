@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManageUserController;
+use App\Http\Controllers\InformationController;
 use App\Http\Controllers\ManageCourseController;
 use App\Http\Controllers\ManageCategoryController;
 use App\Http\Controllers\ManageMaterialController;
@@ -17,13 +19,15 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/',[LandingController::class, 'home'])->name('home');
 Route::get('/about',[LandingController::class, 'about'])->name('about');
 Route::get('/classes',[LandingController::class, 'classes'])->name('classes');
-Route::get('/classes/{course:slug}', [LandingController::class, 'class'])->name('class.show');
+
 
 Route::get('/contact',[LandingController::class, 'contact'])->name('contact');
 
 
+Route::get('/classes/show', [ClassesController::class, 'index'])->name('kelas')->middleware('auth');
+Route::get('/classes/{course:slug}', [ClassesController::class, 'class'])->name('class.show')->middleware('auth');
 Route::get('/classes/{course:slug}/{material:slug}', [MaterialController::class, 'show'])
-    ->name('materials.show');
+    ->name('materials.show')->middleware('auth');
 
 Route::get('/privacy-policy', function () {
     return view('privacy-policy');
@@ -69,6 +73,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings/profile', [SettingController::class, 'edit'])->name('settings.edit');
     Route::put('/settings/profile', [SettingController::class, 'update'])->name('settings.update');
 });
+
+Route::get('/information/{manageinformation:slug}', [InformationController::class, 'show'])
+    ->name('information.show');
+Route::get('/information', [InformationController::class, 'index'])
+    ->name('information');
 
 
 

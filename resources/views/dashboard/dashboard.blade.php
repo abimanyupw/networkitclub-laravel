@@ -1,18 +1,34 @@
 @extends('layouts.dashboard-app')
-
 @section('content')
-    <h1 class=" my-3 text-xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Selamat Datang, {{ auth()->user()->name }}!</h1>
+ <div class="mb-8">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white italic">Dashboard</h1>
+        <nav class="mt-2 flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400">
+           <svg xmlns="http://www.w3.org/2000/svg" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke-width="1.5" 
+                stroke="currentColor" 
+                class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
+            </svg>
+            <a href="{{ route('dashboard') }}" class="hover:underline font-medium">Dashboard</a>
+            <span class="text-gray-400">/</span>
+            <span class="text-gray-500 dark:text-gray-400 font-medium">Dashboard</span>
+        </nav>
+    </div>
 <div class="mb-5 flex items-center justify-between">
-    <div>
-        <h1 class="text-xl font-extrabold text-gray-900 dark:text-white tracking-tight">Dashboard</h1>
-        <p class="text-xs text-gray-500 dark:text-gray-400">Network IT Club.</p>
+    <div  class="my-4 text-2xl font-semibold border-l-4 border-blue-600 pl-3">
+        <h1 class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Dashboard</h1>
+        <p class="text-md text-gray-500 dark:text-gray-400">Network IT Club.</p>
     </div>
     <div class="text-xs font-medium text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full border border-blue-100 dark:border-blue-800">
         Update: {{ now()->format('d M Y') }}
     </div>
 </div>
 
-<div class="grid grid-cols-2 gap-3 mb-6 lg:grid-cols-4">
+<div class="grid grid-cols-2 gap-3 mb-6 lg:grid-cols-4 mx-auto">
+    @can('manageuser')
     <div class="p-4 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm hover:shadow-md transition-shadow group">
         <div class="flex items-center justify-between mb-2">
             <h3 class="text-gray-500 dark:text-gray-400 text-[10px] font-bold uppercase tracking-wider">Anggota</h3>
@@ -22,7 +38,8 @@
         </div>
         <p class="text-xl font-black text-gray-900 dark:text-white">{{ number_format($totalAnggota) }}</p>
         <span class="text-[10px] text-green-500 font-medium">Total Anggota</span>
-    </div>
+    </div>     
+    @endcan
 
     <div class="p-4 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm hover:shadow-md transition-shadow group">
         <div class="flex items-center justify-between mb-2">
@@ -61,6 +78,7 @@
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+    @can('manageuser')
     <div class="lg:col-span-2 p-5 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm">
         <div class="flex items-center justify-between mb-4">
             <h3 class="font-bold text-gray-900 dark:text-white text-sm">Tren Pertumbuhan</h3>
@@ -71,8 +89,7 @@
         <div class="h-[200px]">
             <canvas id="clubChart"></canvas>
         </div>
-    </div>
-
+    </div>  
     <div class="p-5 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm">
         <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-4">Anggota Terbaru</h3>
         <div class="space-y-4">
@@ -97,58 +114,74 @@
             Lihat Semua Anggota
         </button>
     </form>
-    </div>
+    </div>         
+    @endcan
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-1 gap-5 mt-4">
-    <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm overflow-hidden">
-        <div class="bg-blue-600 h-1"></div>
-        <div class="p-5">
-            <h3 class="text-blue-600 dark:text-blue-400 font-bold text-md mb-3 flex items-center">
-                <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    {{-- Bagian Informasi Penting --}}
+    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm overflow-hidden mb-5">
+        <div class="bg-blue-600 px-4 py-2">
+            <h3 class="text-white font-bold text-sm tracking-wide flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 Informasi Penting
             </h3>
-            <div class="space-y-2">
-                <p class="text-gray-700 dark:text-gray-300 text-[18px] leading-relaxed">Selamat datang di Dashboard Developer Network IT Club!</p>
-                <p class="text-gray-500 dark:text-gray-400 text-[18px] leading-relaxed italic">Kelola pengguna, kategori, materi, dan jadwal secara real-time.</p>
-            </div>
+        </div>
+        
+        <div class="p-4">
+            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-2">
+                Selamat datang di Dashboard {{ auth()->user()->name }}, Mari meningkatkan skill IT bersama.
+            </p>
+            <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold italic">
+                Segera jelajahi menu di samping untuk mulai belajar!
+            </p>
         </div>
     </div>
 
-    {{-- Bagian Informasi Penting --}}
-<div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm overflow-hidden">
-    <div class="bg-violet-600 h-1"></div>
-    <div class="p-5">
-        <h3 class="text-blue-600 dark:text-blue-400 font-bold text-md mb-4 flex items-center justify-between">
-            <span class="flex items-center">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
-                </svg>
+    {{-- Bagian Informasi Terbaru --}}
+    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm overflow-hidden">
+        <div class="bg-[#22d3ee] px-4 py-2 flex justify-between items-center">
+            <h3 class="text-white font-bold text-sm tracking-wide flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
                 Informasi Terbaru
-            </span>
-            <a href="{{ route('manageinformation.index') }}" class="text-[10px] bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded-lg hover:bg-blue-100 transition-colors">Lihat Semua</a>
-        </h3>
+            </h3>
+            <a href="{{ route('information') }}" class="text-[10px] bg-white/20 text-white px-2 py-1 rounded hover:bg-white/30 transition-colors">Lihat Semua</a>
+        </div>
 
-        <div class="space-y-4">
-            @forelse($recentInformation as $info)
-                <div class="group relative pl-4 border-l-2 border-blue-100 dark:border-gray-700 hover:border-blue-500 transition-colors">
-                    <a href="{{ route('manageinformation.show', $info->slug) }}" class="block">
-                        <h4 class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
+        <div class="p-4">
+            <div class="space-y-3">
+                @forelse($recentInformation as $info)
+                    <div class="p-3 border border-gray-100 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
+                        <h4 class="text-sm font-bold text-gray-900 dark:text-white mb-1">
                             {{ $info->title }}
                         </h4>
-                        <span class="text-[10px] text-gray-400 font-medium">
-                            {{ $info->created_at->diffForHumans() }}
-                        </span>
-                    </a>
+                        
+                        <div class="prose prose-sm dark:prose-invert max-w-none text-gray-600 dark:text-gray-400 text-xs line-clamp-2">
+                            {!! Str::limit(strip_tags($info->content), 120) !!} 
+                        </div>
+
+                        <div class="mt-2 pt-2 border-t border-gray-50 dark:border-gray-700 flex justify-between items-center">
+                            <span class="text-[10px] text-gray-400 font-medium italic">
+                                Diposting: {{ $info->created_at->diffForHumans() }}
+                            </span>
+                            <a href="{{ route('information.show', $info->slug) }}" class="text-[10px] text-blue-600 font-bold hover:underline">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                @empty
+                    <div class="text-center py-6">
+                        <p class="text-gray-400 text-xs italic">Belum ada informasi terbaru.</p>
+                    </div>
+                @endforelse
+            </div>
+
+            @if($recentInformation->hasPages())
+                <div class="mt-4 pt-2 border-t border-gray-100 dark:border-gray-800">
+                    {{ $recentInformation->links() }}
                 </div>
-            @empty
-                <div class="text-center py-4">
-                    <p class="text-gray-400 text-xs italic">Belum ada informasi terbaru.</p>
-                </div>
-            @endforelse
+            @endif
         </div>
     </div>
-</div>
+
 </div>
 <style>
  /* Styling agar tabel dari Summernote memiliki border dan padding */

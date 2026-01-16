@@ -9,7 +9,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <a href="{{ route('manageinformation.index') }}" class="hover:underline font-medium">Manajemen Informasi</a>
+            <a href="{{ route('information') }}" class="hover:underline font-medium">Informasi</a>
             <span class="text-gray-400">/</span>
             <span class="text-gray-500 dark:text-gray-400 font-medium italic">{{ $manageinformation->title }}</span>
         </nav>
@@ -22,22 +22,12 @@
                 <div class="p-8 space-y-6">
                     <div class="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-4">
                         <h4 class="text-lg font-bold text-gray-800 dark:text-white uppercase tracking-wider">Konten Informasi</h4>
-                        <div class="flex gap-2">
-                            <a href="{{ route('manageinformation.edit', $manageinformation->slug) }}" class="p-2 bg-amber-100 text-amber-600 rounded-lg hover:bg-amber-200 transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                </svg>
-                            </a>
-                        </div>
+                       
                     </div>
                     
                     {{-- Judul --}}
                     <div>
                         <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-4">{{ $manageinformation->title }}</h2>
-                        <div class="flex items-center gap-2 text-xs text-black font-mono bg-gray-200 dark:bg-slate-800 px-3 py-1.5 rounded-lg w-fit">
-                            <span>Slug:</span>
-                            <span class="text-blue-500">{{ $manageinformation->slug }}</span>
-                        </div>
                     </div>
 
                     {{-- Konten Utama (Render HTML) --}}
@@ -47,7 +37,7 @@
                     </div>
 
                     <div class="pt-8 flex justify-start gap-3 border-t border-gray-100 dark:border-gray-800">
-                        <a href="{{ route('manageinformation.index') }}" class="px-8 py-3 bg-blue-600 text-white rounded-2xl font-bold">
+                        <a href="{{ route('information') }}" class="px-8 py-3 bg-blue-600 text-gray-300 rounded-2xl font-bold">
                             Kembali ke Daftar
                         </a> 
                     </div>
@@ -103,10 +93,10 @@
         border-collapse: collapse;
         margin-top: 1rem;
         margin-bottom: 1rem;
-        border: 1px solid #e2e8f0; /* Warna border abu-abu terang */
+        border: 1px solid #d9e6f8; /* Warna border abu-abu terang */
     }
     .prose th, .prose td {
-        border: 1px solid #e2e8f0;
+        border: 1px solid #bfdbff;
         padding: 8px 12px;
         text-align: left;
     }

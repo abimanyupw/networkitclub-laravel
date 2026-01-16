@@ -34,7 +34,7 @@ class DashboardController extends Controller
             'totalKelas'   => Course::count(),
             'totalKategori'=> Category::count(),
             'recentMembers' => User::latest()->take(5)->get(),
-            'recentInformation' => Information::latest()->take(5)->get(),
+            'recentInformation' => Information::latest()->paginate(1),
             // Kirim data asli ke view
             'labels' => $labels,
             'grafikAnggota' => $grafikAnggota,

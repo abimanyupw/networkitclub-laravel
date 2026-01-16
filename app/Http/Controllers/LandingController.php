@@ -20,27 +20,6 @@ class LandingController extends Controller
         return view('landing.classes', compact('courses'));
     }
 
-    public function class(Course $course)
-    {
-        $categorySlug = request('category');
-
-        // 1. Ambil materi dengan filter (Eager Loading tetap ada)
-        $materials = $course->materials()
-            ->with('category')
-            ->when($categorySlug, function ($query) use ($categorySlug) {
-                $query->whereHas('category', fn($q) => $q->where('slug', $categorySlug));
-            })
-            ->paginate(6)
-            ->withQueryString();
-
- 
-        $categories = Category::whereHas('materials', function ($query) use ($course) {
-            $query->where('course_id', $course->id);
-        })->get();
-
-        return view('dashboard.class', compact('course', 'materials', 'categories'));
-    }
-
     public function contact(){
         return view('landing.contact');
     }
