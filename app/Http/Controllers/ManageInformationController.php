@@ -113,6 +113,21 @@ class ManageInformationController extends Controller
         $slug = SlugService::createSlug(Information::class, 'slug', $request->title);
         return response()->json(['slug' => $slug]);
     }
-
     
+    public function uploadImage(Request $request)
+{
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        
+        // Simpan gambar ke folder public/storage/information
+        $path = $file->store('information', 'public');
+        
+        // Kembalikan URL lengkap gambar
+        return response()->json([
+            'url' => asset('storage/' . $path)
+        ]);
+    }
+
+    return response()->json(['error' => 'No image uploaded'], 400);
+}
 }

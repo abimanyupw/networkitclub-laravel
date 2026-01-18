@@ -6,10 +6,17 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 <style>
+    /* Styling Editor */
     .note-editor { border-radius: 0.75rem !important; overflow: hidden; border: 1px solid #e2e8f0 !important; }
     .note-editable { min-height: 450px !important; background-color: white !important; font-size: 16px !important; }
+    
+    /* Dark Mode Compatibility */
     .dark .note-editable { background-color: #0f172a !important; color: #f1f5f9 !important; }
     .dark .note-toolbar { background-color: #1e293b !important; border-bottom: 1px solid #334155 !important; }
+    
+    /* Custom CSS */
+    .animate-fade-in { animation: fadeIn 0.4s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 
 <div class="min-h-screen text-gray-900 dark:text-white pb-10">
@@ -26,11 +33,36 @@
         </nav>
     </div>
 
+    @if (session('success'))
+        <div class="mb-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 flex items-center gap-3 animate-fade-in">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm font-bold">{{ session('success') }}</span>
+        </div>
+    @endif
+
+    @if (session('error') || $errors->any())
+        <div class="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-500 flex items-start gap-3 animate-fade-in">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+            <div>
+                <span class="text-sm font-bold block">Gagal memperbarui informasi:</span>
+                <ul class="list-disc list-inside text-xs opacity-80 mt-1">
+                    @if(session('error')) <li>{{ session('error') }}</li> @endif
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    @endif
+
     <div class="mb-4 text-2xl font-semibold border-l-4 border-blue-600 pl-3">
         Edit: {{ $information->title }}
     </div>
 
-    {{-- Gunakan parameter $information->slug sesuai Route Model Binding Anda --}}
     <form action="{{ route('manageinformation.update', $information->slug) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -42,8 +74,8 @@
                     <div>
                         <label class="block text-sm font-semibold mb-2">Judul Informasi</label>
                         <input type="text" id="title" name="title" value="{{ old('title', $information->title) }}" required
-                               class="w-full px-4 py-3 rounded-xl border dark:border-gray-700 bg-gray-50 dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 transition outline-none dark:text-white">
-                        @error('title') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                               class="w-full px-4 py-3 rounded-xl border transition outline-none @error('title') border-rose-500 bg-rose-50 dark:bg-rose-900/10 @else dark:border-gray-700 bg-gray-50 dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 @enderror dark:text-white">
+                        @error('title') <p class="text-rose-500 text-xs mt-1">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
@@ -55,7 +87,7 @@
                     <div>
                         <label class="block text-sm font-semibold mb-2">Konten Lengkap</label>
                         <textarea name="content" id="summernote">{{ old('content', $information->content) }}</textarea>
-                        @error('content') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                        @error('content') <p class="text-rose-500 text-xs mt-1">{{ $message }}</p> @enderror
                     </div>
                 </div>
             </div>
@@ -64,9 +96,6 @@
             <div class="lg:col-span-1 space-y-6">
                 <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800 p-6 space-y-6">
                     
-                    {{-- Thumbnail Preview (Jika Tabel Informations Memiliki Kolom Thumbnail) --}}
-                   
-
                     {{-- Tombol Aksi --}}
                     <div class="space-y-3">
                         <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-bold shadow-lg transition transform active:scale-95 flex items-center justify-center gap-2">
@@ -81,6 +110,14 @@
                             Batal
                         </a>
                     </div>
+                    
+                    <div class="pt-4 border-t border-gray-100 dark:border-gray-800">
+                        <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-2">Statistik Data</p>
+                        <div class="text-xs text-gray-500 space-y-1 italic">
+                            <p>Dibuat: {{ $information->created_at->format('d M Y') }}</p>
+                            <p>Update Terakhir: {{ $information->updated_at->diffForHumans() }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -89,7 +126,7 @@
 
 <script>
     $(document).ready(function() {
-        // 1. Summernote
+        // 1. Summernote Initialization
         $('#summernote').summernote({
             height: 500,
             placeholder: 'Tulis isi informasi di sini...',
@@ -106,17 +143,39 @@
             }
         });
 
+        // 2. AJAX Upload for Summernote Images
+        function uploadImage(file) {
+            let data = new FormData();
+            data.append("image", file);
+            $.ajax({
+                url: "{{ route('manageinformation.uploadImage') }}",
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: data,
+                type: "POST",
+                headers: { 'X-CSRF-TOKEN': "{{ csrf_token() }}" },
+                success: function(response) {
+                    $('#summernote').summernote("insertImage", response.url);
+                },
+                error: function(err) {
+                    alert("Gagal mengunggah gambar. Pastikan rute uploadImage sudah terdaftar.");
+                    console.error("Upload error:", err);
+                }
+            });
+        }
 
-
-        // 2. Auto Slug
-        const title = document.querySelector('#title');
-        const slug = document.querySelector('#slug');
-        title.addEventListener('change', function() {
-            fetch("{{ route('manageinformation.checkSlug') }}?title=" + encodeURIComponent(title.value))
-                .then(response => response.json())
-                .then(data => slug.value = data.slug)
+        // 3. Auto Slug
+        const titleInput = document.querySelector('#title');
+        const slugInput = document.querySelector('#slug');
+        titleInput.addEventListener('change', function() {
+            if(titleInput.value.trim() !== "") {
+                fetch("{{ route('manageinformation.checkSlug') }}?title=" + encodeURIComponent(titleInput.value))
+                    .then(response => response.json())
+                    .then(data => slugInput.value = data.slug)
+                    .catch(error => console.error('Error fetching slug:', error));
+            }
         });
     });
-
 </script>
 @endsection
