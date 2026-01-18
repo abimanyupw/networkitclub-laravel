@@ -31,8 +31,8 @@
     {{-- TABLE CARD --}}
     <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 overflow-hidden">
         <div class="bg-indigo-600 px-6 py-4 flex justify-between items-center">
-            <h2 class="text-white font-bold text-lg">Daftar Mahasiswa Mengumpulkan</h2>
-            <span class="bg-indigo-500 text-white text-xs px-3 py-1 rounded-full border border-indigo-400">
+            <h2 class="text-white font-bold text-lg">Daftar Siswa Mengumpulkan</h2>
+            <span class="bg-indigo-500 text-white text-xs mx-2 px-3 py-1 rounded-full border border-indigo-400">
                 Total: {{ $assignment->submissions->count() }}
             </span>
         </div>

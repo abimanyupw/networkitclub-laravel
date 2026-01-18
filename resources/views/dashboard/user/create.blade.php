@@ -95,6 +95,9 @@
                                         <option value="teknisi" {{ old('role') == 'teknisi' ? 'selected' : '' }}>Teknisi</option>
                                         <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
                                         <option value="siswa" {{ old('role') == 'siswa' ? 'selected' : '' }}>Siswa</option>
+                                        @if (auth()->user()->role === 'developer')
+                                        <option value="developer" {{ old('role') == 'developer' ? 'selected' : '' }}>Developer</option>   
+                                        @endif
                                     </select>
                                     @error('role') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                                 </div>

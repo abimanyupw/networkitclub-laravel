@@ -84,6 +84,9 @@
                                         <option value="teknisi" {{ old('role', $user->role) == 'teknisi' ? 'selected' : '' }}>Teknisi</option>
                                         <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
                                         <option value="developer" {{ old('role', $user->role) == 'siswa' ? 'selected' : '' }}>Siswa</option>
+                                          @if (auth()->user()->role === 'developer')
+                                        <option value="developer" {{ old('role') == 'developer' ? 'selected' : '' }}>Developer</option>   
+                                        @endif
                                     </select>
                                 </div>
                             </div>

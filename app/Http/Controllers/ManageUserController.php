@@ -58,7 +58,7 @@ class ManageUserController extends Controller
             'username' => 'required|string|min:3|max:20|unique:users,username',
             'email'    => 'required|email:dns|unique:users,email',
             'password' => 'required|min:8',
-            'role'     => 'required|in:admin,teknisi,siswa',
+            'role'     => 'required|in:admin,teknisi,siswa,developer',
             'image'    => 'nullable|image|file|max:2048' // Maksimal 2MB
         ]);
 
@@ -101,7 +101,7 @@ class ManageUserController extends Controller
 
             $rules = [
                 'name'     => 'required|string|max:255',
-                'role'     => 'required|in:admin,teknisi,siswa',
+                'role'     => 'required|in:admin,teknisi,siswa,developer',
                 'image'    => 'nullable|image|file|max:2048',
             ];
 

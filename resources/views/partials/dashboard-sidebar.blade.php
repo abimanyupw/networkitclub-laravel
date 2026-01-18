@@ -1,6 +1,6 @@
 <aside class="fixed top-0 left-0 z-20 flex-col flex-shrink-0 w-64 h-full pt-16 transition-transform duration-300 lg:flex"
        :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'">
-    <div class="relative flex flex-col flex-1 min-h-full pt-0 bg-gray-100 border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700 overflow-y-auto">
+    <div class="relative flex flex-col flex-1 h-full pt-0 bg-gray-100 border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700 overflow-y-auto">
         <div class="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto">
             <div class="flex-1 px-3 space-y-1 divide-y divide-gray-200 dark:divide-gray-700">
                 <ul class="pb-2 space-y-2">
@@ -34,7 +34,16 @@
                                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
                             </svg>
 
-                            <span class="ml-3">Informasi</span>
+                            <span class="ml-3">Information</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/assignments" class="flex items-center p-2 text-base font-medium {{ request()->is('information*') ? 'text-gray-900 rounded-lg bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-700':'text-gray-900 rounded-lg hover:text-black dark:hover:text-white hover:bg-gray-200 dark:text-white/70 dark:hover:bg-gray-700'}}">
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
+                            <path d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5zm3 4h8v2H8V7zm0 4h8v2H8v-2zm0 4h5v2H8v-2z"/>
+                            </svg>
+
+                            <span class="ml-3">Assignment</span>
                         </a>
                     </li>
                     @can('manage')
@@ -80,6 +89,16 @@
                             </svg>
 
                             <span class="ml-3">Materi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/manageassignment" class="flex items-center p-2 text-base font-medium {{ request()->is('manageassignment*') ? 'text-gray-900 rounded-lg bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-700':'text-gray-900 rounded-lg hover:text-black dark:hover:text-white hover:bg-gray-200 dark:text-white/70 dark:hover:bg-gray-700'}}">
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
+                            <path d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5zm3 4h8v2H8V7zm0 4h8v2H8v-2zm0 4h5v2H8v-2z"/>
+                            </svg>
+
+
+                            <span class="ml-3">Tugas</span>
                         </a>
                     </li>
                     <li>

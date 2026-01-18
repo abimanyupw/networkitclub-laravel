@@ -56,13 +56,21 @@ class ManageCourseController extends Controller
             ->with('success', 'Kelas baru berhasil ditambahkan.');
     }
 
-    /**
-     * Tampilkan detail kelas (jika diperlukan).
-     */
-    public function show(Course $managecourse)
-    {
-        return view('dashboard.course.show', ['course' => $managecourse]);
-    }
+        public function show(Course $managecourse)
+{
+    // Mengambil materi dengan kategorinya dan dikelompokkan
+    $groupedMaterials = $managecourse->materials()
+                        ->with('category')
+                        ->get()
+                        ->groupBy(function($item) {
+                            return $item->category ? $item->category->name : 'Uncategorized';
+                        });
+
+    return view('dashboard.course.show', [
+        'course' => $managecourse,
+        'groupedMaterials' => $groupedMaterials
+    ]);
+}
 
     /**
      * Form edit kelas.

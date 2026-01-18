@@ -19,16 +19,6 @@
         Data Informasi
     </div>
 
-    {{-- Action Buttons --}}
-     <div class="mb-6 flex flex-wrap gap-2">
-        <a href="/manageinformation/create" class="flex items-center gap-2 rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 transition shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-            </svg>
-            Tambah Informasi
-        </a>
-       
-    </div>
 
     {{-- Filter & Search --}}
      <form action="/manageinformation" method="GET" class="mb-6 grid grid-cols-1 gap-4 md:grid-cols-3">

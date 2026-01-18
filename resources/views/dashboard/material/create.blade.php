@@ -129,6 +129,7 @@
                     <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-bold shadow-lg transition transform active:scale-95">
                         Simpan Materi
                     </button>
+                    <a href="{{ route('managematerial.index') }}" class="block text-center w-full py-2 border border-blue-600 rounded-md text-xl text-blue-600">Batal</a>
                 </div>
             </div>
         </div>

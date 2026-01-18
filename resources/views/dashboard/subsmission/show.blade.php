@@ -13,17 +13,19 @@
   <line x1="8" y1="11" x2="16" y2="11"/>
   <line x1="8" y1="15" x2="13" y2="15"/>
 </svg>
-            <a href="{{ route('managecategory.index') }}" class="hover:underline font-medium">Tugas </a>
+
+            <a href="{{ route('assignments.index') }}" class="hover:underline font-medium">Tugas </a>
             <span class="text-gray-400">/</span>
             <span class="text-gray-500 dark:text-gray-400 font-medium">Detail Tugas </span>
         </nav>
+    </div>
         
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
                 <h1 class="text-3xl font-extrabold tracking-tight">
                     {{ $assignment->title }}
                 </h1>
-                <div class="flex items-center mt-2 text-sm text-gray-500 dark:text-gray-400">
+                <div class="flex items-center my-2 text-sm text-gray-500 dark:text-gray-400">
                     <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -35,12 +37,12 @@
             </div>
             
             @if($submission)
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                <span class="inline-flex items-center mb-3 px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
                     <span class="w-2 h-2 mr-2 bg-green-500 rounded-full"></span>
                     Sudah Dikumpulkan
                 </span>
             @else
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
+                <span class="inline-flex items-center mb-3 px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
                     <span class="w-2 h-2 mr-2 bg-yellow-500 rounded-full"></span>
                     Belum Dikumpulkan
                 </span>
@@ -50,7 +52,7 @@
 
     {{-- Deskripsi --}}
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 mb-8">
-        <h2 class="text-lg font-bold mb-4 flex items-center">
+        <h2 class="text-lg text-black dark:text-white font-bold mb-4 flex items-center">
             <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
@@ -110,9 +112,9 @@
         </div>
     @else
     {{-- Form Section --}}
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border mb-5 border-gray-100 dark:border-gray-700 overflow-hidden">
         <div class="p-6 border-b border-gray-100 dark:border-gray-700">
-            <h2 class="text-lg font-bold flex items-center gap-2">
+            <h2 class="text-black dark:text-white text-lg font-bold flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12V4m0 0l-4 4m4-4l4 4" />
                 </svg>
@@ -167,7 +169,7 @@
                         Tambahkan Catatan <span class="text-gray-400 font-normal">(Opsional)</span>
                     </label>
                     <textarea name="note" rows="3" placeholder="Tulis pesan untuk pengajar di sini..."
-                        class="w-full border-gray-200 dark:border-gray-600 dark:bg-gray-700 rounded-xl focus:ring-blue-500 focus:border-blue-500 p-3 transition">{{ old('note', $submission->note ?? '') }}</textarea>
+                        class="w-full bg-gray-200 text-black dark:text-white border-blue-200 dark:border-gray-600 dark:bg-gray-700 rounded-xl focus:ring-blue-500 focus:border-blue-500 p-3 transition">{{ old('note', $submission->note ?? '') }}</textarea>
                 </div>
 
                 <div class="flex items-center justify-end">
@@ -183,5 +185,6 @@
         </div>
     </div>
     @endif
+    <a href="/assignments" class="px-5 py-2 text-sm my-5 font-bold rounded-md bg-blue-400 text-gray-100 hover:text-gray-100 dark:hover:text-white transition">Kembali</a>
 </div>
 @endsection
