@@ -131,7 +131,14 @@
                     <div>
                         <label class="block text-sm font-semibold mb-2">Ringkasan Materi</label>
                         <textarea name="description" rows="3" required placeholder="Tuliskan deskripsi singkat..."
-                            class="w-full px-4 py-3 rounded-xl border transition outline-none @error('description') border-rose-500 bg-rose-50 @else dark:border-gray-700 dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 @enderror">{{ old('description') }}</textarea>
+                            class="w-full rounded-xl border transition outline-none px-4 py-3 
+                    @error('description') 
+                        border-rose-500 bg-rose-50 text-rose-900 placeholder-rose-300
+                        dark:bg-rose-950/30 dark:text-rose-200 dark:placeholder-rose-700
+                    @else 
+                        border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 
+                        text-slate-900 dark:text-slate-100 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 
+                    @enderror">{{ old('description') }}</textarea>
                         @error('description') <p class="text-rose-500 text-xs mt-1">{{ $message }}</p> @enderror
                     </div>
 

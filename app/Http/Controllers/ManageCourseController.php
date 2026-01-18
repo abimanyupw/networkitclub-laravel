@@ -41,8 +41,8 @@ class ManageCourseController extends Controller
     {
         $validated = $request->validate([
             'title'       => 'required|string|max:255',
-            'slug'        => 'required|string|unique:courses,slug',
-            'description' => 'required|string',
+            'slug'        => 'required|string|min:3|unique:courses,slug',
+            'description' => 'required|string|min:10',
             'image'       => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
@@ -92,8 +92,8 @@ class ManageCourseController extends Controller
         // 2. Validasi
         $validated = $request->validate([
             'title'       => 'required|string|max:255',
-            'slug'        => 'required|string|unique:courses,slug,' . $managecourse->id,
-            'description' => 'required|string',
+            'slug'        => 'required|string|min:3|unique:courses,slug,' . $managecourse->id,
+            'description' => 'required|string|min:10',
             'image'       => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 

@@ -59,8 +59,8 @@ Route::middleware(['auth', 'role:admin,developer,teknisi'])
         Route::resource('/managematerial', ManageMaterialController::class);
         Route::get('/manageinformation/checkSlug', [ManageInformationController::class, 'checkSlug'])
             ->name('manageinformation.checkSlug');
-              Route::post('/managematerial/upload-image', [ManageMaterialController::class, 'uploadImage'])
-            ->name('managematerial.uploadImage');
+              Route::post('/manageInformation/upload-image', [ManageinformationController::class, 'uploadImage'])
+            ->name('manageinformation.uploadImage');
         Route::resource('/manageinformation', ManageInformationController::class);
 });
 Route::middleware(['auth', 'role:admin,developer'])

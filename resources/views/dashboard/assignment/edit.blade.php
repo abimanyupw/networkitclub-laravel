@@ -105,21 +105,17 @@
                     </div>
 
                     {{-- Deskripsi --}}
-                    <div>
-                        <label for="description" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Instruksi Tugas</label>
-                        <textarea name="description" id="description" rows="6" 
-                            placeholder="Tuliskan detail tugas, format pengumpulan, dan kriteria penilaian..."
-                            class="w-full rounded-xl border transition outline-none px-4 py-3 
-                            @error('description') 
-                                border-rose-500 bg-rose-50 text-rose-900 placeholder-rose-300
-                                dark:bg-rose-950/30 dark:text-rose-200 dark:placeholder-rose-700
-                            @else 
-                                border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 
-                                text-slate-900 dark:text-slate-100 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 
-                            @enderror" 
-                            required>{{ old('description') }}</textarea>
-                        @error('description') <p class="text-rose-500 text-xs mt-1 font-medium">{{ $message }}</p> @enderror
-                    </div>
+                   <textarea name="description" id="description" rows="6" 
+    placeholder="Tuliskan detail tugas, format pengumpulan, dan kriteria penilaian..."
+    class="w-full rounded-xl border transition outline-none px-4 py-3 
+    @error('description') 
+        border-rose-500 bg-rose-50 text-rose-900 placeholder-rose-300
+        dark:bg-rose-950/30 dark:text-rose-200 dark:placeholder-rose-700
+    @else 
+        border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 
+        text-slate-900 dark:text-slate-100 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 
+    @enderror" 
+    required>{{ old('description', $assignment->description) }}</textarea>
 
                     {{-- Action Buttons --}}
                     <div class="flex flex-col md:flex-row justify-end gap-3 pt-6 border-t border-slate-100 dark:border-slate-800">
