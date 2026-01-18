@@ -24,13 +24,13 @@
         }
         .animate-float { animation: float 6s ease-in-out infinite; }
         
-        /* Hide scrollbar */
         body::-webkit-scrollbar { display: none; }
         body { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-[#020617] text-slate-200 min-h-screen relative flex items-center justify-center overflow-x-hidden p-4">
 
+    {{-- Background Glow --}}
     <div class="fixed inset-0 z-0 pointer-events-none">
         <div class="absolute top-[-10%] left-[-10%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-blue-600/10 blur-[100px] rounded-full"></div>
         <div class="absolute bottom-[-10%] right-[-10%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-purple-600/10 blur-[100px] rounded-full"></div>
@@ -45,35 +45,35 @@
                     <img src="{{ asset('img/logo.png') }}" alt="Logo" class="w-12 h-12 object-contain" onerror="this.src='https://cdn-icons-png.flaticon.com/512/606/606203.png'">
                 </div>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Network IT Club</h2>
-                
+                <p class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em] mt-2">Sign in to continue</p>
             </div>
 
             <form method="POST" action="{{ route('login') }}" class="space-y-5">
                 @csrf
                 
+                {{-- Input Username --}}
                 <div class="space-y-2">
                     <label class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] ml-1">Username</label>
                     <div class="relative group">
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-blue-500 transition-colors">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 @error('username') text-rose-500 @else text-slate-500 group-focus-within:text-blue-500 @enderror transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                         </span>
-                        <input type="text" name="username" required
-                            class="w-full pl-12 pr-4 py-4 rounded-2xl bg-slate-950/50 border border-slate-800 text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all placeholder:text-slate-700"
+                        <input type="text" name="username" value="{{ old('username') }}" required
+                            class="w-full pl-12 pr-4 py-4 rounded-2xl bg-slate-950/50 border @error('username') border-rose-500/50 ring-4 ring-rose-500/10 @else border-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 @enderror text-white outline-none transition-all placeholder:text-slate-700"
                             placeholder="Username">
                     </div>
                 </div>
 
+                {{-- Input Password --}}
                 <div class="space-y-2">
-                    <div class="flex justify-between items-center px-1">
-                        <label class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">Password</label>
-                    </div>
+                    <label class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] ml-1">Password</label>
                     <div class="relative group" x-data="{ show: false }">
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-blue-500 transition-colors">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 @error('username') text-rose-500 @else text-slate-500 group-focus-within:text-blue-500 @enderror transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                         </span>
                         
-                        <input :type="show ? 'text' : 'password'" id="password" name="password" required
-                            class="w-full pl-12 pr-12 py-4 rounded-2xl bg-slate-950/50 border border-slate-800 text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all placeholder:text-slate-700"
+                        <input :type="show ? 'text' : 'password'" name="password" required
+                            class="w-full pl-12 pr-12 py-4 rounded-2xl bg-slate-950/50 border @error('username') border-rose-500/50 ring-4 ring-rose-500/10 @else border-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 @enderror text-white outline-none transition-all placeholder:text-slate-700"
                             placeholder="••••••••">
                         
                         <button type="button" @click="show = !show" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white transition-colors">
@@ -82,7 +82,19 @@
                         </button>
                     </div>
                 </div>
-                <div class="flex items-center justify-between px-1 py-1">
+
+                {{-- Bagian Pesan Error (Tengah) --}}
+                @error('username')
+                    <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-500 animate-in slide-in-from-top-2 duration-300">
+                        <div class="flex items-center mb-1">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="text-[11px] font-bold uppercase tracking-widest">Login Error</span>
+                        </div>
+                        <p class="text-[10px] font-medium opacity-80 ml-6">{{ $message }}</p>
+                    </div>
+                @enderror
+
+                <div class="flex items-center justify-between px-1">
                     <label class="inline-flex items-center group cursor-pointer">
                         <div class="relative">
                             <input type="checkbox" name="remember" class="sr-only peer">
@@ -93,52 +105,23 @@
                         </div>
                         <span class="ml-3 text-[11px] font-bold text-slate-500 group-hover:text-slate-300 uppercase tracking-widest transition-colors">Keep Session</span>
                     </label>
-                </div>
-                                    {{-- Alert Success --}}
-            @if (session('success'))
-                <div id="alert-success" class="flex items-center p-4 mb-4 text-emerald-800 rounded-lg bg-emerald-50 dark:bg-slate-800 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 shadow-sm transition-all duration-300" role="alert">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <div class="ml-3 text-sm font-bold tracking-wide">
-                        {{ session('success') }}
-                    </div>
-                    <button type="button" onclick="document.getElementById('alert-success').remove()" class="ml-auto -mx-1.5 -my-1.5 bg-emerald-50 text-emerald-500 rounded-lg focus:ring-2 focus:ring-emerald-400 p-1.5 hover:bg-emerald-200 inline-flex items-center justify-center h-8 w-8 dark:bg-slate-800 dark:text-emerald-400 dark:hover:bg-slate-700">
-                        <span class="sr-only">Close</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                        </svg>
-                    </button>
-                </div>
-            @endif
 
-            {{-- Alert Error (Opsional) --}}
-            @if (session('error'))
-                <div id="alert-error" class="flex items-center p-4 mb-4 text-rose-800 rounded-lg bg-rose-50 dark:bg-slate-800 dark:text-rose-400 border border-rose-200 dark:border-rose-800 shadow-sm" role="alert">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <div class="ml-3 text-sm font-bold tracking-wide">
-                        {{ session('error') }}
-                    </div>
-                    <button type="button" onclick="document.getElementById('alert-error').remove()" class="ml-auto -mx-1.5 -my-1.5 bg-rose-50 text-rose-500 rounded-lg focus:ring-2 focus:ring-rose-400 p-1.5 hover:bg-rose-200 inline-flex items-center justify-center h-8 w-8 dark:bg-slate-800 dark:text-rose-400 dark:hover:bg-slate-700">
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                        </svg>
-                    </button>
-                </div>
-            @endif
+                                        <a href="{{ route('forgot.password') }}"
+                    class="rounded-2xl my-3 text-sm font-black text-blue-600 dark:text-blue-700">
+                    Lupa Password ?
+                    </a>
 
+                </div>
+                
                 <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-blue-500/20 active:scale-[0.98] uppercase tracking-widest text-sm">
                     Log in
                 </button>
             </form>
+            
 
             <div class="mt-8 pt-6 border-t border-slate-800/50 text-center">
                 <a href="{{ route('register') }}" class="text-xs font-bold text-blue-500 hover:text-blue-400 transition-colors uppercase tracking-widest">Request Access Account</a>
             </div>
-          
-
         </div>
         
         <p class="mt-8 text-center text-[10px] font-bold text-slate-600 uppercase tracking-[0.3em]">

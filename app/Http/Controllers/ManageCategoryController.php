@@ -54,57 +54,39 @@ class ManageCategoryController extends Controller
 
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $slug)
-    {
-        $category = Category::where('slug', $slug)->firstOrFail();
-        return view('dashboard.category.show', compact('category'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($slug)
-    {
-        $category = Category::where('slug', $slug)->firstOrFail();
-        return view('dashboard.category.edit', compact('category'));
-    }
-
-
-
-
-    /**
      * Update the specified resource in storage.
      */
    
+   // ... bagian atas tetap sama ...
+
+    public function show(Category $managecategory)
+    {
+        return view('dashboard.category.show', ['category' => $managecategory]);
+    }
+
+    public function edit(Category $managecategory)
+    {
+        return view('dashboard.category.edit', ['category' => $managecategory]);
+    }
+
     public function update(Request $request, Category $managecategory)
     {
         $validated = $request->validate([
             'name'        => 'required|string|max:255',
-            'slug'        => 'required|string|min:3|max:50|unique:categories,slug,' . $managecategory->slug . ',slug',
+            'slug'        => 'required|string|min:3|max:50|unique:categories,slug,' . $managecategory->id,
             'description' => 'required|string|min:10',
         ]);
 
         $managecategory->update($validated);
 
-        return redirect('/managecategory')
-            ->with('success', 'Kategori berhasil diperbarui');
+        return redirect('/managecategory')->with('success', 'Kategori berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($slug)
+    public function destroy(Category $managecategory)
     {
-          $category = Category::where('slug', $slug)->firstOrFail();
-
-        // Hapus data dari database
-        $category->delete();
-
-        return redirect()->route('managecategory.index')->with('success', 'Kategori Materi berhasil dihapus secara permanen.');
+        $managecategory->delete();
+        return redirect()->route('managecategory.index')->with('success', 'Kategori berhasil dihapus.');
     }
-
 
 
     public function checkSlug(Request $request)

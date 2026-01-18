@@ -3,22 +3,26 @@
 namespace App\Policies;
 
 use App\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy
 {
-    // app/Policies/UserPolicy.php
+    use HandlesAuthorization;
 
     public function before(User $authUser, $ability)
     {
-        // Developer boleh SEMUA
+        // Jika return true, maka method update/delete di bawah DIABAIKAN
         if ($authUser->role === 'developer') {
             return true;
         }
+        
+        // Jika return null, Laravel akan lanjut mengecek method update/delete
+        return null; 
     }
 
     public function update(User $authUser, User $targetUser)
     {
-        // Admin tidak boleh edit developer
+        // Admin hanya boleh edit jika targetnya BUKAN developer
         if ($authUser->role === 'admin') {
             return $targetUser->role !== 'developer';
         }
@@ -28,12 +32,10 @@ class UserPolicy
 
     public function delete(User $authUser, User $targetUser)
     {
-        // Admin tidak boleh hapus developer
         if ($authUser->role === 'admin') {
             return $targetUser->role !== 'developer';
         }
 
         return false;
     }
-
 }

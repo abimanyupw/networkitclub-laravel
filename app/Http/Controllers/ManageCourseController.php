@@ -4,35 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ManageCourseController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Tampilkan daftar kursus/kelas.
      */
     public function index(Request $request)
     {
         $query = Course::query();
 
-        // SEARCH
+        // Fitur Pencarian
         if ($request->filled('search')) {
-            $query->where(function ($q) use ($request) {
-                $q->where('title', 'like', "%{$request->search}%")
-                ->orWhere('slug', 'like', "%{$request->search}%")
-                ->orWhere('description', 'like', "%{$request->search}%");
-            });
+            $query->where('title', 'like', "%{$request->search}%")
+                  ->orWhere('description', 'like', "%{$request->search}%");
         }
-        
-        // Menggunakan nama variabel plural agar konsisten di Blade
+
         $courses = $query->latest()->paginate(10)->withQueryString();
         return view('dashboard.course.index', compact('courses'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Form tambah kelas.
      */
     public function create()
     {
@@ -40,7 +35,7 @@ class ManageCourseController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Simpan kelas baru.
      */
     public function store(Request $request)
     {
@@ -48,11 +43,11 @@ class ManageCourseController extends Controller
             'title'       => 'required|string|max:255',
             'slug'        => 'required|string|unique:courses,slug',
             'description' => 'required|string',
-            'thumbnail'   => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image'       => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        if ($request->hasFile('thumbnail')) {
-            $validated['thumbnail'] = $request->file('thumbnail')->store('courses', 'public');
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('course-images', 'public');
         }
 
         Course::create($validated);
@@ -62,82 +57,76 @@ class ManageCourseController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Tampilkan detail kelas (jika diperlukan).
      */
-   /**
- * Display the specified resource.
- */
-    public function show($slug)
+    public function show(Course $managecourse)
     {
-        // Mengambil course beserta materi-materinya
-        // Kita asumsikan di Model Course sudah ada relasi 'materials'
-        $course = Course::where('slug', $slug)
-            ->with(['materials.category']) 
-            ->firstOrFail();
-
-        // Mengambil kategori unik yang ada di dalam kursus ini saja
-        $categories = $course->materials->pluck('category')->unique('id');
-
-        return view('dashboard.course.show', compact('course', 'categories'));
+        return view('dashboard.course.show', ['course' => $managecourse]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Form edit kelas.
      */
-    public function edit($slug)
+    public function edit(Course $managecourse)
     {
-        $course = Course::where('slug', $slug)->firstOrFail();
-        return view('dashboard.course.edit', compact('course'));
+        // Menggunakan Route Model Binding, $managecourse otomatis dicari berdasarkan slug
+        return view('dashboard.course.edit', ['course' => $managecourse]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update data kelas.
      */
-    public function update(Request $request, $slug)
+    public function update(Request $request, Course $managecourse)
     {
-        $course = Course::where('slug', $slug)->firstOrFail();
+        // 1. Cek Otorisasi (CoursePolicy)
+        $this->authorize('update', $managecourse);
 
+        // 2. Validasi
         $validated = $request->validate([
             'title'       => 'required|string|max:255',
-            'slug'        => 'required|string|unique:courses,slug,' . $course->id,
+            'slug'        => 'required|string|unique:courses,slug,' . $managecourse->id,
             'description' => 'required|string',
-            'thumbnail'   => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image'       => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        if ($request->hasFile('thumbnail')) {
-            // Hapus thumbnail lama
-            if ($course->thumbnail) {
-                Storage::delete('public/' . $course->thumbnail);
+        // 3. Logika File Image
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama jika ada
+            if ($managecourse->image) {
+                Storage::disk('public')->delete($managecourse->image);
             }
-            $validated['thumbnail'] = $request->file('thumbnail')->store('courses', 'public');
+            $validated['image'] = $request->file('image')->store('course-images', 'public');
         }
 
-        $course->update($validated);
+        // 4. Update Database
+        $managecourse->update($validated);
 
         return redirect()->route('managecourse.index')
             ->with('success', 'Data kelas berhasil diperbarui.');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Hapus kelas.
      */
-    public function destroy($slug)
+    public function destroy(Course $managecourse)
     {
-        $course = Course::where('slug', $slug)->firstOrFail();
+        // Cek Otorisasi
+        $this->authorize('delete', $managecourse);
 
-        // Hapus file thumbnail dari storage
-        if ($course->thumbnail) {
-            Storage::delete('public/' . $course->thumbnail);
+        // Hapus file fisik
+        if ($managecourse->image) {
+            Storage::disk('public')->delete($managecourse->image);
         }
 
-        $course->delete();
+        // Hapus data dari DB
+        $managecourse->delete();
 
         return redirect()->route('managecourse.index')
             ->with('success', 'Kelas berhasil dihapus secara permanen.');
     }
 
     /**
-     * Generate slug otomatis (Ajax)
+     * Generate slug otomatis via Ajax.
      */
     public function checkSlug(Request $request)
     {

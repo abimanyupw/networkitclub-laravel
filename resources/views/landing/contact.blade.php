@@ -64,32 +64,63 @@
         </div>
 
         {{-- SISI KANAN: FORM KONTAK --}}
-        <div class="lg:col-span-2 bg-gray-300 dark:bg-gray-800 p-8 md:p-12 rounded-[1.5rem] shadow-sm border border-gray-100 dark:border-gray-700">
-            <form action="#" class="space-y-6">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label for="name" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Nama Lengkap</label>
-                        <input type="text" id="name" class="w-full p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all outline-none" placeholder="Masukkan namamu" required>
-                    </div>
-                    <div>
-                        <label for="email" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Email Aktif</label>
-                        <input type="email" id="email" class="w-full p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all outline-none" placeholder="name@email.com" required>
-                    </div>
-                </div>
-                <div>
-                    <label for="subject" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Perihal</label>
-                    <input type="text" id="subject" class="w-full p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all outline-none" placeholder="Misal: Tanya Pendaftaran" required>
-                </div>
-                <div>
-                    <label for="message" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Pesan</label>
-                    <textarea id="message" rows="6" class="w-full p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all outline-none" placeholder="Tuliskan pesanmu di sini..."></textarea>
-                </div>
-                <button type="submit" class="w-full md:w-fit px-12 py-4 text-white font-black bg-blue-600 dark:bg-blue-500 rounded-2xl hover:bg-blue-700 dark:hover:bg-blue-600 hover:shadow-xl hover:shadow-blue-500/30 transform hover:-translate-y-1 transition-all">
-                    Kirim Pesan
-                </button>
-            </form>
+<div class="lg:col-span-2 bg-gray-300 dark:bg-gray-800 p-8 md:p-12 rounded-[1.5rem] shadow-sm border border-gray-100 dark:border-gray-700">
+    <form id="whatsappForm" class="space-y-6">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div>
+                <label for="name" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Nama Lengkap</label>
+                <input type="text" id="name" class="w-full p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all outline-none" placeholder="Masukkan namamu" required>
+            </div>
+            <div>
+                <label for="email" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Email Aktif</label>
+                <input type="email" id="email" class="w-full p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all outline-none" placeholder="name@email.com" required>
+            </div>
         </div>
-    </div>
+        <div>
+            <label for="subject" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Perihal</label>
+            <input type="text" id="subject" class="w-full p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all outline-none" placeholder="Misal: Tanya Pendaftaran" required>
+        </div>
+        <div>
+            <label for="message" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Pesan</label>
+            <textarea id="message" rows="6" class="w-full p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-2xl focus:ring-blue-500 focus:border-blue-500 transition-all outline-none" placeholder="Tuliskan pesanmu di sini..." required></textarea>
+        </div>
+        <button type="submit" class="w-full md:w-fit px-12 py-4 text-white font-black bg-blue-600 dark:bg-blue-500 rounded-2xl hover:bg-blue-700 dark:hover:bg-blue-600 hover:shadow-xl hover:shadow-blue-500/30 transform hover:-translate-y-1 transition-all">
+            Kirim via WhatsApp
+        </button>
+    </form>
+</div>
+
+</div>
 </section>
+
+<script>
+    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Ambil data dari input
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        // Nomor WhatsApp tujuan (Ganti dengan nomor admin Anda)
+        // Gunakan format kode negara tanpa tanda +, misal: 628123456789
+        const phoneNumber = "6288231759642"; 
+
+        // Susun template pesan
+        const text = `Halo Admin NIC, saya ingin menghubungi melalui form website:
+                
+        *Nama:* ${name}
+        *Email:* ${email}
+        *Perihal:* ${subject}
+        *Pesan:* ${message}`;
+
+        // Encode pesan untuk URL
+        const encodedText = encodeURIComponent(text);
+
+        // Redirect ke WhatsApp
+        window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
+    });
+</script>    
 
 @endsection

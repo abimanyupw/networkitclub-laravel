@@ -78,7 +78,7 @@
                             <div class="col-span-1 md:col-span-2">
                                 <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Description</label>
                                 <textarea name="description" placeholder="Pelajari dasar-dasar keamanan siber, pertahanan jaringan, dan etika hacker untuk melindungi data." 
-                                       class="w-full h-30 px-4 py-2.5 text-white rounded-xl border @error('description') border-red-500 @else border-gray-200 dark:border-gray-700 @enderror bg-gray-50 dark:bg-slate-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 transition outline-none">{{ old('description') }}"</textarea>
+                                       class="w-full h-30 px-4 py-2.5 text-white dark:text-black rounded-xl border @error('description') border-red-500 @else border-gray-200 dark:border-gray-700 @enderror bg-gray-50 dark:bg-slate-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 transition outline-none">{{ old('description') }}"</textarea>
                                 @error('description') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                             </div>
                         </div>

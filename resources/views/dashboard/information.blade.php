@@ -83,7 +83,7 @@
                         </span>
                     </td>
                     <td class="px-6 py-4 text-gray-600 dark:text-gray-400">
-                        {{ Str::limit(strip_tags($item->content), 50) }}
+                        {{ Str::limit(strip_tags($item->content), 20) }}
                     </td>
                     <td class="px-6 py-4">     
                         <div class="flex justify-center gap-2">

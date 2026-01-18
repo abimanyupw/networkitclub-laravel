@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<div class="grid grid-cols-2 gap-3 mb-6 lg:grid-cols-4 mx-auto">
+<div class="grid grid-cols-1 gap-3 mb-6 lg:grid-cols-4 mx-auto">
     @can('manageuser')
     <div class="p-4 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm hover:shadow-md transition-shadow group">
         <div class="flex items-center justify-between mb-2">
@@ -151,35 +151,25 @@
         <div class="p-4">
             <div class="space-y-3">
                 @forelse($recentInformation as $info)
-                    <div class="p-3 border border-gray-100 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
-                        <h4 class="text-sm font-bold text-gray-900 dark:text-white mb-1">
-                            {{ $info->title }}
-                        </h4>
-                        
-                        <div class="prose prose-sm dark:prose-invert max-w-none text-gray-600 dark:text-gray-400 text-xs line-clamp-2">
-                            {!! Str::limit(strip_tags($info->content), 120) !!} 
-                        </div>
-
-                        <div class="mt-2 pt-2 border-t border-gray-50 dark:border-gray-700 flex justify-between items-center">
-                            <span class="text-[10px] text-gray-400 font-medium italic">
-                                Diposting: {{ $info->created_at->diffForHumans() }}
-                            </span>
-                            <a href="{{ route('information.show', $info->slug) }}" class="text-[10px] text-blue-600 font-bold hover:underline">Baca Selengkapnya</a>
-                        </div>
-                    </div>
-                @empty
-                    <div class="text-center py-6">
-                        <p class="text-gray-400 text-xs italic">Belum ada informasi terbaru.</p>
-                    </div>
-                @endforelse
-            </div>
-
-            @if($recentInformation->hasPages())
-                <div class="mt-4 pt-2 border-t border-gray-100 dark:border-gray-800">
-                    {{ $recentInformation->links() }}
-                </div>
-            @endif
+    <div class="p-3 border border-gray-100 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
+        <h4 class="text-sm font-bold text-gray-900 dark:text-white mb-1">{{ $info->title }}</h4>
+        <div class="text-gray-600 dark:text-gray-400 text-xs line-clamp-2">
+            {!! Str::limit(strip_tags($info->content), 120) !!} 
         </div>
+        <div class="mt-2 pt-2 border-t border-gray-50 dark:border-gray-700 flex justify-between items-center">
+            <span class="text-[10px] text-gray-400 font-medium italic">
+                {{ $info->created_at->diffForHumans() }}
+            </span>
+            <a href="{{ route('information.show', $info->slug) }}" class="text-[10px] text-blue-600 font-bold hover:underline">Baca Selengkapnya</a>
+        </div>
+    </div>
+@empty
+    <p class="text-center text-xs italic text-gray-400">Belum ada informasi.</p>
+@endforelse
+
+<div class="mt-4 ajax-pagination">
+    {{ $recentInformation->links() }}
+</div>
     </div>
 
 </div>

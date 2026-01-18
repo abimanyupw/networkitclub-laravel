@@ -34,7 +34,7 @@
                     {{-- Judul --}}
                     <div>
                         <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-4">{{ $manageinformation->title }}</h2>
-                        <div class="flex items-center gap-2 text-xs text-black font-mono bg-gray-200 dark:bg-slate-800 px-3 py-1.5 rounded-lg w-fit">
+                        <div class="flex items-center gap-2 text-xs text-black dark:text-white font-mono bg-gray-200 dark:bg-slate-800 px-3 py-1.5 rounded-lg w-fit">
                             <span>Slug:</span>
                             <span class="text-blue-500">{{ $manageinformation->slug }}</span>
                         </div>

@@ -39,7 +39,7 @@
                     </li>
                     @can('manage')
                     <p class="text-xs font-bold text-gray-500 uppercase dark:text-gray-400">Manage</p>
-                    @can('manageuser')        
+                          @can('manageuser') 
                     <li>
                         <a href="/manageuser" class="flex items-center p-2 text-base font-medium {{ request()->is('manageuser*') ? 'text-gray-900 rounded-lg bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-700':'text-gray-900 rounded-lg hover:text-black dark:hover:text-white hover:bg-gray-200 dark:text-white/70 dark:hover:bg-gray-700'}}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -50,6 +50,8 @@
                             <span class="ml-3">Anggota</span>
                         </a>
                     </li>
+                    
+                    
                     <li>
                         <a href="/managecourse" class="flex items-center p-2 text-base font-medium {{ request()->is('managecourse*') ? 'text-gray-900 rounded-lg bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-700':'text-gray-900 rounded-lg hover:text-black dark:hover:text-white hover:bg-gray-200 dark:text-white/70 dark:hover:bg-gray-700'}}">
                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" fill="currentColor">
@@ -59,7 +61,9 @@
                             <span class="ml-3">Kelas</span>
                         </a>
                     </li>
+                        
                     @endcan
+                    
                     <li>
                         <a href="/managecategory" class="flex items-center p-2 text-base font-medium {{ request()->is('managecategory*') ? 'text-gray-900 rounded-lg bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-700':'text-gray-900 rounded-lg hover:text-black dark:hover:text-white hover:bg-gray-200 dark:text-white/70 dark:hover:bg-gray-700'}}">
                             <svg xmlns="http://www.w3.org/2000/svg"class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor">

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\LandingController;
@@ -11,8 +12,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManageUserController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\ManageCourseController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ManageCategoryController;
 use App\Http\Controllers\ManageMaterialController;
+use App\Http\Controllers\ManageAssignmentController;
 use App\Http\Controllers\ManageInformationController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -86,3 +89,51 @@ Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
 Route::get('/register', [RegisterController::class, 'show'])->name('register')->middleware('guest');
 Route::post('/register', [RegisterController::class, 'register'])->middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+
+
+
+Route::get('/forgot-password', function () {
+    return view('forgot-password');
+})->name('forgot.password');
+
+Route::post('/forgot-password', [ForgotPasswordController::class, 'process'])
+    ->name('forgot.password.process');
+
+Route::middleware(['auth', 'role:admin,developer,teknisi'])->group(function () {
+
+    Route::get('/manageassignment/checkSlug',
+        [ManageAssignmentController::class, 'checkSlug'])
+        ->name('manageassignment.checkSlug');
+
+    Route::resource('/manageassignment', ManageAssignmentController::class);
+    Route::put('/submission/{submission}/score',
+    [SubmissionController::class, 'score']);
+
+    Route::post(
+        '/manageassignment/submission/{submission}/score',
+        [SubmissionController::class, 'score']
+    )->name('submission.score');
+});
+
+
+
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/assignments', [SubmissionController::class, 'index'])
+        ->name('assignments.index');
+
+    Route::get('/assignments/{assignment}', [SubmissionController::class, 'show'])
+        ->name('assignments.show');
+
+    Route::post('/assignments/{assignment}/submit', [SubmissionController::class, 'store'])
+        ->name('assignments.submit');
+});
+
+Route::middleware(['auth', 'role:admin,developer,teknisi'])->group(function () {
+    Route::post(
+        '/manageassignment/{assignment:slug}/submission/{submission}/score',
+        [ManageAssignmentController::class, 'giveScore']
+    )->name('assignment.submission.score');
+});
