@@ -118,7 +118,7 @@
             <div class="group flex flex-col h-full rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 shadow-sm transition-all duration-300 hover:shadow-2xl hover:border-blue-500 dark:hover:border-blue-500">
                 {{-- Image Container --}}
                 <div class="relative w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800">
-                    <img class="mx-auto h-full w-full object-contain rounded-2xl p-2 transition-transform duration-500 group-hover:scale-110" src="storage/{{ $kelas['image'] }}" alt="{{ $kelas['title'] }}" />
+                    <img class="mx-auto h-full w-full object-contain rounded-2xl p-2 transition-transform duration-500 group-hover:scale-110" src="{{ $kelas->thumbnail ? asset('storage/' . $kelas->thumbnail) : 'https://ui-avatars.com/api/?name=' . urlencode($kelas->title) . '&background=0D8ABC&color=fff&size=200&bold=true' }}" alt="{{ $kelas['title'] }}" />
                 </div>
 
                 <div class="flex flex-col flex-grow pt-6">

@@ -21,6 +21,7 @@ class ManageUserController extends Controller
             $query->where(function ($q) use ($request) {
                 $q->where('username', 'like', "%{$request->search}%")
                 ->orWhere('email', 'like', "%{$request->search}%")
+                ->orWhere('phone', 'like', "%{$request->search}%")
                 ->orWhere('name', 'like', "%{$request->search}%");
             });
         }
@@ -57,6 +58,7 @@ class ManageUserController extends Controller
             'name'     => 'required|string|max:255',
             'username' => 'required|string|min:3|max:20|unique:users,username',
             'email'    => 'required|email:dns|unique:users,email',
+            'phone'    => 'required|string|max:15',
             'password' => 'required|min:8',
             'role'     => 'required|in:admin,teknisi,siswa,developer',
             'image'    => 'nullable|image|file|max:2048' // Maksimal 2MB
@@ -103,6 +105,7 @@ class ManageUserController extends Controller
                 'name'     => 'required|string|max:255',
                 'role'     => 'required|in:admin,teknisi,siswa,developer',
                 'image'    => 'nullable|image|file|max:2048',
+                'phone'    => 'required|string|max:15',
             ];
 
             // Validasi email: jika email berubah, cek keunikan. Jika tetap, abaikan cek unik untuk ID ini.

@@ -75,6 +75,16 @@
                     placeholder="Email">
             </div>
 
+            {{-- PHONE --}}
+            <div>
+                <label class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] ml-1">Phone</label>
+                <input type="text" name="phone" required
+                    class="w-full mt-2 px-4 py-4 rounded-2xl bg-slate-950/50 border border-slate-800 text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none"
+                    placeholder="Phone">
+            </div>
+
+
+
             {{-- PASSWORD --}}
             <div x-data="{ show:false }">
                 <label class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] ml-1">Password</label>

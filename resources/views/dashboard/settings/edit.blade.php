@@ -87,8 +87,13 @@
                                 <input type="email" name="email" value="{{ old('email', $user->email) }}"
                                     class="w-full px-4 py-2.5 rounded-xl border bg-gray-50 dark:bg-slate-800 dark:text-white">
                             </div>
+                            <div>
+                                <label class="block text-black dark:text-white text-sm font-semibold mb-2">Phone</label>
+                                <input type="text" name="phone" value="{{ old('phone', $user->phone) }}"
+                                    class="w-full px-4 py-2.5 rounded-xl border bg-gray-50 dark:bg-slate-800 dark:text-white">
+                            </div>
                         </div>
-
+                        
                         <hr>
 
                         <div>

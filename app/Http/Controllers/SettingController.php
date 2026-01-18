@@ -28,6 +28,7 @@ class SettingController extends Controller
             'name'     => 'required|string|max:255',
             'username' => 'required|string|min:3|max:20|unique:users,username,' . $user->id,
             'email'    => 'required|email|unique:users,email,' . $user->id,
+            'phone'    => 'required|string|max:15',
             'image'    => 'nullable|image|max:2048',
             'password' => 'nullable|min:8'
         ];

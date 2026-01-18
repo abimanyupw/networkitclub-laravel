@@ -101,6 +101,7 @@
                     <th class="border-b border-r border-gray-200 px-4 py-4 dark:border-gray-900">Username</th>
                     <th class="border-b border-r border-gray-200 px-4 py-4 dark:border-gray-900">Nama Lengkap</th>
                     <th class="border-b border-r border-gray-200 px-4 py-4 dark:border-gray-900">Email</th>
+                    <th class="border-b border-r border-gray-200 px-4 py-4 dark:border-gray-900">Phone</th>
                     <th class="border-b border-r border-gray-200 px-4 py-4 dark:border-gray-900">Role</th>
                     <th class="border-b border-r border-gray-200 px-4 py-4 dark:border-gray-900 text-center">Aksi</th>
                 </tr>
@@ -111,17 +112,17 @@
                     <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 text-center font-medium">{{ ($users->currentPage() - 1) * $users->perPage() + $loop->iteration }}</td>
                     <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 font-semibold">{{ $user->username }}</td>
                     <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800">
-    <div class="flex items-center gap-3 min-w-0">
-        <img class="w-9 h-9 rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-sm" 
-             src="{{ $user->image ? asset('storage/' . $user->image) : 'https://ui-avatars.com/api/?name=' . urlencode($user->name) . '&background=0D8ABC&color=fff&bold=true' }}" 
-             alt="">
-        <span class="font-medium text-gray-700 dark:text-gray-300 truncate">
-            {{ $user->name }}
-        </span>
-    </div>
-</td>
-
+                        <div class="flex items-center gap-3 min-w-0">
+                            <img class="w-9 h-9 rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-sm" 
+                                src="{{ $user->image ? asset('storage/' . $user->image) : 'https://ui-avatars.com/api/?name=' . urlencode($user->name) . '&background=0D8ABC&color=fff&bold=true' }}" 
+                                alt="">
+                            <span class="font-medium text-gray-700 dark:text-gray-300 truncate">
+                                {{ $user->name }}
+                            </span>
+                        </div>
+                    </td>
                     <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 text-gray-800 dark:text-gray-400">{{ $user->email }}</td>
+                    <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 text-gray-800 dark:text-gray-400">{{ $user->phone ?? '-' }}</td>
                     <td class="border-b border-r border-gray-300 px-4 py-3 dark:border-gray-800 uppercase">
                         <span class="px-2 py-1 rounded text-[10px] font-bold {{ $user->role == 'developer' ? 'bg-indigo-100 text-indigo-700' : 'bg-sky-100 text-sky-700' }}">
                             {{ $user->role }}

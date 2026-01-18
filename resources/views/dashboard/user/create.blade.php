@@ -87,6 +87,14 @@
                                     @error('email') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                                 </div>
 
+                                {{-- Phone --}}
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Phone</label>
+                                    <input type="text" name="phone" value="{{ old('phone') }}" placeholder="Cth: 08123456789"
+                                           class="w-full px-4 py-2.5 rounded-xl border @error('phone') border-red-500 @else border-gray-200 dark:border-gray-700 @enderror bg-gray-50 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 transition outline-none">
+                                    @error('phone') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                                </div>
+
                                 {{-- Role --}}
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Role</label>

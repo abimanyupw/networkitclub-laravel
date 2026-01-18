@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             'email'=> 'abimanyupw@gmail.com',
             'password' => Hash::make('Abimanyu237'),
             'remember_token' => Str::random(10),
+            'phone' => '081234567890',
             'image' => ''
         ]);
         User::create([
@@ -43,6 +44,7 @@ class DatabaseSeeder extends Seeder
             'email'=> 'hamdantr@gmail.com',
             'password' => Hash::make('12345678'),
             'remember_token' => Str::random(10),
+            'phone' => '081234567891',
             'image' => ''
         ]);
 

@@ -37,7 +37,7 @@
                                 <p class="text-xs text-gray-500 truncate">{{ auth()->user()->email }}</p>
                             </div>
                             <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm hover:bg-blue-50">Dashboard</a>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-blue-50">Settings</a>
+                            <a href="{{ route('settings.show') }}" class="block px-4 py-2 text-sm hover:bg-blue-50">Settings</a>
                             <form action="{{ route('logout') }}" method="POST" class="border-t mt-1">
                                 @csrf
                                 <button type="submit" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">Sign out</button>
@@ -88,7 +88,7 @@
                             </div>
                             <div class="space-y-1">
                                 <a href="{{ route('dashboard') }}" class="block py-1 px-3 text-white/80 hover:bg-white/10 rounded">Dashboard</a>
-                                <a href="" class="block py-1 px-3 text-white/80 hover:bg-white/10 rounded">Settings</a>
+                                <a href="{{ route('settings.show') }}" class="block py-1 px-3 text-white/80 hover:bg-white/10 rounded">Settings</a>
                                <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button type="submit" class="w-full text-left py-2 px-3 text-white/80 hover:bg-white/10 rounded">

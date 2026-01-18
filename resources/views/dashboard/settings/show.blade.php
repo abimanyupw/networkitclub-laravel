@@ -58,7 +58,8 @@
 </div>
           {{-- Alert Success --}}
             @if (session('success'))
-                <div id="alert-success" class="flex items-center p-4 mb-4 text-emerald-800 rounded-lg bg-emerald-50 dark:bg-slate-800 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 shadow-sm transition-all duration-300" role="alert">
+                <div id="alert-success" class
+                ="flex items-center p-4 mb-4 text-emerald-800 rounded-lg bg-emerald-50 dark:bg-slate-800 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 shadow-sm transition-all duration-300" role="alert">
                     <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -120,14 +121,14 @@
 
     {{-- DETAIL AKUN --}}
     <div class="lg:col-span-2">
-        <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800 overflow-hidden">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800 overflow-auto">
             <div class="p-8 space-y-6">
 
                 <h4 class="text-lg font-bold text-gray-800 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-4">
                     Informasi Akun
                 </h4>
 
-                <div class="grid grid-cols-1 gap-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
                     {{-- Nama --}}
                     <div class="flex items-center gap-4">
@@ -161,6 +162,24 @@
                             </p>
                             <p class="text-gray-800 dark:text-gray-200 font-medium text-lg">
                                 {{ $user->email }}
+                            </p>
+                        </div>
+                    </div>
+
+                    {{-- Phone --}}
+                    <div class="flex items-center gap-4">
+                        <div class="bg-blue-50 dark:bg-slate-800 p-3 rounded-xl text-blue-600 dark:text-blue-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.213l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.213-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-bold tracking-wider">
+                                Phone
+                            </p>
+                            <p class="text-gray-800 dark:text-gray-200 font-medium text-lg">
+                                {{ $user->phone ?? 'N/A' }}
                             </p>
                         </div>
                     </div>

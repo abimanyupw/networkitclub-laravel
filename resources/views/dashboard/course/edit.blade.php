@@ -40,7 +40,7 @@
         @csrf
         @method('PUT')
         
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-black dark:text-white">
             {{-- Bagian Kiri: Preview Image --}}
             <div class="lg:col-span-1">
                 <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-xl border border-gray-100 dark:border-gray-800 text-center">

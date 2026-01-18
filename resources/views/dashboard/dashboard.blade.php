@@ -115,6 +115,9 @@
             <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-2">
                 Selamat datang di Dashboard {{ auth()->user()->name }}, Mari meningkatkan skill IT bersama.
             </p>
+            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-2">
+                Investasi terbaik adalah investasi pada diri sendiri. Mari bangun portofolio hebat dan kuasai teknologi masa depan di sini.
+            </p>
         </div>
     </div>
 
