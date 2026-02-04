@@ -87,3 +87,16 @@ Pastikan perangkat Anda sudah terinstal:
     
    **Dark Mode**
     <img width="1898" height="1000" alt="image" src="https://github.com/user-attachments/assets/68c7666d-66b6-46cf-add5-df13adf991c7" />
+
+### Login & Registration form
+
+1. **Login Form**
+   <img width="1919" height="1003" alt="image" src="https://github.com/user-attachments/assets/335c78aa-0b92-4e88-ab03-272a0790e810" />
+   
+2. **Registration Form**
+   <img width="1908" height="996" alt="image" src="https://github.com/user-attachments/assets/4385b1f8-ceb0-49f0-87bc-7ffb25f62c0e" />
+
+3. **Forgot Password**
+   <img width="1919" height="990" alt="image" src="https://github.com/user-attachments/assets/7e446d67-9320-4b05-90ef-b0cf858571b6" />
+
+
