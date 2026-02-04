@@ -57,6 +57,7 @@ Pastikan perangkat Anda sudah terinstal:
 
 ## Dokumentasi
 
+# Landing page
 1. **Landing Page Home**
    
    **Light Mode**
