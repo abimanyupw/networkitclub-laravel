@@ -45,7 +45,7 @@
                     <img src="{{ asset('img/logo.png') }}" alt="Logo" class="w-12 h-12 object-contain" onerror="this.src='https://cdn-icons-png.flaticon.com/512/606/606203.png'">
                 </div>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Network IT Club</h2>
-                <p class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em] mt-2">Sign in to continue</p>
+                <p class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em] mt-2">Log in to continue</p>
             </div>
 
             <form method="POST" action="{{ route('login') }}" class="space-y-5">

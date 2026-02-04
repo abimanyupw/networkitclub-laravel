@@ -92,7 +92,7 @@
                                     <select name="role" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 transition outline-none">
                                         <option value="teknisi" {{ old('role', $user->role) == 'teknisi' ? 'selected' : '' }}>Teknisi</option>
                                         <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
-                                        <option value="developer" {{ old('role', $user->role) == 'siswa' ? 'selected' : '' }}>Siswa</option>
+                                        <option value="siswa" {{ old('role', $user->role) == 'siswa' ? 'selected' : '' }}>Siswa</option>
                                           @if (auth()->user()->role === 'developer')
                                         <option value="developer" {{ old('role') == 'developer' ? 'selected' : '' }}>Developer</option>   
                                         @endif

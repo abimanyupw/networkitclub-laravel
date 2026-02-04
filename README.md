@@ -57,4 +57,31 @@ Pastikan perangkat Anda sudah terinstal:
 
 ## Dokumentasi
 
-**Landing Page Home**
+1. **Landing Page Home**
+
+    **Light Mode**
+    <img width="1898" height="998" alt="image" src="https://github.com/user-attachments/assets/03298072-9b39-4273-a8ea-d9ef72afbd0d" />
+    **Dark Mode**
+    <img width="1897" height="999" alt="image" src="https://github.com/user-attachments/assets/57890eb8-db59-49fc-91a8-fefc1a96e221" />
+
+2. **Landing Page About**
+
+    **Light Mode**
+    <img width="1894" height="1001" alt="image" src="https://github.com/user-attachments/assets/85979111-3796-4a7d-b2bf-84a5394bf1ac" />
+    **Dark Mode**
+
+     <img width="1907" height="1002" alt="image" src="https://github.com/user-attachments/assets/5e6a2acb-e71d-41c3-82a5-4cd94a60610e" />
+
+3. **Landing Page Classes**
+
+    **Light Mode**
+    <img width="1894" height="1001" alt="image" src="https://github.com/user-attachments/assets/43f63bcf-1309-4652-a9aa-b92c940877a7" />
+    **Dark Mode**
+    <img width="1899" height="998" alt="image" src="https://github.com/user-attachments/assets/7bb5356b-0049-417d-91dc-4e367b79a2ca" />
+
+4. **Landing Page Contact**
+
+    **Light Mode**
+    <img width="1893" height="927" alt="image" src="https://github.com/user-attachments/assets/bf48bd35-53f7-4542-8def-d4047a94d5b7" />
+    **Dark Mode**
+    <img width="1898" height="1000" alt="image" src="https://github.com/user-attachments/assets/68c7666d-66b6-46cf-add5-df13adf991c7" />

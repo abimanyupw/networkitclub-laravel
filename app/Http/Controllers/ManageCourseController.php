@@ -94,7 +94,7 @@ class ManageCourseController extends Controller
             'title'       => 'required|string|max:255',
             'slug'        => 'required|string|min:3|unique:courses,slug,' . $managecourse->id,
             'description' => 'required|string|min:10',
-            'image'       => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image'       => 'nullable|image|mimes:jpg,jpeg,png|max:10240',
         ]);
 
         // 3. Logika File Image
