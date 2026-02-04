@@ -33,16 +33,27 @@ Pastikan perangkat Anda sudah terinstal:
     ```
 
 2. **Instal library PHP**
-   composer install
+
+    ```bash
+    composer install
+    ```
 
 3. **Instal package JavaScript/CSS**
-   npm install
+
+    ```bash
+    npm install
+    ```
 
 4. **. Konfigurasi Lingkungan (.env)**
-   cp .env.example .env
+
+    ```bash
+    cp .env.example .env
+    ```
 
 5. **Generate Key**
-   php artisan key:generate
+    ```bash
+    php artisan key:generate
+    ```
 
 ## Dokumentasi
 
